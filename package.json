@@ -9,8 +9,9 @@
   "scripts": {
     "test": "echo \"All tests passed\" && exit 0",
     "build": "echo \"BUILD OK\" && exit 0",
-    "prebuild": "npm run version && npm run test",
-    "version": "node version-check.js"
+    "prebuild": "npm run version && npm run lint && npm run test",
+    "version": "node version-check.js",
+    "lint": "eslint . --ext .js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,10 @@
   },
   "homepage": "https://github.com/bohandley/react-vending-machine#readme",
   "dependencies": {
-    "eslint": "^5.0.1",
     "semver": "^5.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-plugin-react": "^7.10.0"
   }
 }
