@@ -1,0 +1,22 @@
+{
+  "name": "react-vending-machine",
+  "version": "1.0.0",
+  "description": "a model of a vending machine using react.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bohandley/react-vending-machine.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "brendan ohandley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bohandley/react-vending-machine/issues"
+  },
+  "homepage": "https://github.com/bohandley/react-vending-machine#readme"
+}
