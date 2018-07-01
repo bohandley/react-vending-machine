@@ -2,11 +2,15 @@
   "name": "react-vending-machine",
   "version": "1.0.0",
   "description": "a model of a vending machine using react.js",
+  "engines": {
+    "node": "9.3.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"All tests passed\" && exit 0",
     "build": "echo \"BUILD OK\" && exit 0",
-    "prebuild": "npm run test"
+    "prebuild": "npm run test",
+    "version": "node version-check.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/bohandley/react-vending-machine/issues"
   },
-  "homepage": "https://github.com/bohandley/react-vending-machine#readme"
+  "homepage": "https://github.com/bohandley/react-vending-machine#readme",
+  "dependencies": {
+    "semver": "^5.5.0"
+  }
 }
