@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"All tests passed\" && exit 0",
+    "test": "karma start --singleRun",
     "build": "echo \"BUILD OK\" && exit 0",
     "prebuild": "npm run version && npm run lint && npm run test",
     "version": "node version-check.js",
@@ -29,10 +29,15 @@
   "homepage": "https://github.com/bohandley/react-vending-machine#readme",
   "dependencies": {
     "http-server": "^0.11.1",
+    "jasmine": "^3.1.0",
+    "karma": "^2.0.4",
+    "karma-commonjs": "^1.0.0",
     "semver": "^5.5.0"
   },
   "devDependencies": {
     "eslint": "^5.0.1",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2"
   }
 }
