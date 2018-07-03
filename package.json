@@ -11,7 +11,7 @@
     "build": "echo \"BUILD OK\" && exit 0",
     "prebuild": "npm run version && npm run lint && npm run test && npm run bundle",
     "version": "node version-check.js",
-    "lint": "eslint . --ext .js",
+    "lint": "eslint . --ext .js --fix",
     "start": "http-server dist",
     "bundle": "webpack"
   },
@@ -39,6 +39,7 @@
     "karma": "^2.0.4",
     "karma-commonjs": "^1.0.0",
     "karma-webpack": "^3.0.0",
+    "react": "^16.4.1",
     "semver": "^5.5.0",
     "webpack": "^4.14.0"
   },

@@ -1,4 +1,4 @@
-import * as sayHello from '../src/scripts/sayHello.js';
+import * as sayHello from "../src/scripts/sayHello.js";
 
 describe("Greet", function(){
     it("concats Hello and a name", function() { 
