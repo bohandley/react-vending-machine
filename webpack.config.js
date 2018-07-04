@@ -3,12 +3,12 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const path = require("path"); 
 
 module.exports = {
-    mode: "development",
+    mode: "none",
     devtool: "source-map",
     entry  : "./src/scripts/app.js",     
     output : {
         path: path.resolve(__dirname, "dist"),
-        filename : "./dist/scripts/app.js"
+        filename : "./scripts/app.js"
     },
     module: {
         rules: [ {
@@ -16,7 +16,7 @@ module.exports = {
             loader  : "babel-loader",
             exclude: /node_modules/,
             query   : {
-                presets: [["es2015", "react"]]
+                presets: ["es2015", "react"]
             } 
         }
         ]

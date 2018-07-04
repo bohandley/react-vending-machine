@@ -15,11 +15,11 @@ const weights = {
 };
 
 const displays = [
-    'INSERT COIN', 
-    'PRICE: ', 
-    'THANK YOU', 
-    'EXACT CHANGE',
-    'SOLD OUT'
+    "INSERT COIN", 
+    "PRICE: ", 
+    "THANK YOU", 
+    "EXACT CHANGE",
+    "SOLD OUT"
 ];
 
 const monies = [
@@ -104,7 +104,7 @@ Machine.prototype = {
     },
 
     getProductFromInventory: function(product){
-        let index = this.inventory.findIndex((element) => element.name == product.name)
+        let index = this.inventory.findIndex((element) => element.name == product.name);
         if ( index == -1 )
             return false;
         else        
@@ -175,4 +175,4 @@ Machine.prototype = {
             return displays[3];
         }
     }
-}
+};
