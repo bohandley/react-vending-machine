@@ -15,17 +15,6 @@ var dime    = new Coin({name: 'dime'});
 var quarter = new Coin({name: 'quarter'});
 var penny   = new Coin({name: 'penny'});
 let machine = new Machine({
-    totalCoins: [
-        utils.copy(nickel),
-        utils.copy(nickel),
-        utils.copy(nickel),
-        utils.copy(dime),
-        utils.copy(dime),
-        utils.copy(dime),
-        utils.copy(quarter),
-        utils.copy(quarter),
-        utils.copy(quarter)
-    ],
     inventory: [
         utils.copy(cola),
         utils.copy(cola),
@@ -35,6 +24,17 @@ let machine = new Machine({
         utils.copy(candy),
     ]
 });
+machine.loadCoins([
+    utils.copy(nickel),
+    utils.copy(nickel),
+    utils.copy(nickel),
+    utils.copy(dime),
+    utils.copy(dime),
+    utils.copy(dime),
+    utils.copy(quarter),
+    utils.copy(quarter),
+    utils.copy(quarter)
+]);
 // import VendingMachine from '../scripts/machine';
 
 class VendingMachine extends React.Component {
