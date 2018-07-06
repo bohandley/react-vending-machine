@@ -1,10 +1,10 @@
 export function Machine(args) {
-    this.totalCoins = args.totalCoins || [];
+    this.totalCoins = args.totalCoins ? args.totalCoins : [];
     this.insertedCoins = [];
     this.currentAmount = 0;
     this.coinReturn = [];
     this.productReturn = [];
-    this.inventory = args.inventory || [];
+    this.inventory = args.inventory ? args.inventory : [];
     this.display = this.initialDisplay();
 }
 
@@ -164,7 +164,8 @@ Machine.prototype = {
 
     // Sum the total amount of coins inside the machine 
     sumTotalCoins: function() {
-        return this.totalCoins.reduce((acc, coin) => acc + coin.value, 0);
+        if ( this.totalCoins.length > 0)
+            return this.totalCoins.reduce((acc, coin) => acc + coin.value, 0);
     },
 
     // Set the initial display of the machine to INSERT COIN or EXACT CHANGE
@@ -176,3 +177,5 @@ Machine.prototype = {
         }
     }
 };
+
+// export default Machine;
