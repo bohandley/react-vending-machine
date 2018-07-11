@@ -6,16 +6,23 @@ import { Product } from "../scripts/product";
 
 import utils from "../scripts/utilities";
 
-var cola  = new Product({name: "Cola", price: 100});
-var chips = new Product({name: "Chips", price: 50});
-var candy = new Product({name: "Candy", price: 65});
-var cheetos = new Product({name: "Cheetos", price: 50});
-var twizzlers = new Product({name: "Twizzlers", price: 75});
+const weightHash = {
+    772: 25,
+    415: 10,
+    630: 5,
+    554: 1
+};
 
-var nickel  = new Coin({name: "nickel", value: 5});
-var dime    = new Coin({name: "dime", value: 10});
-var quarter = new Coin({name: "quarter", value: 25});
-var penny   = new Coin({name: "penny", value: 1});
+let cola  = new Product({name: "Cola", price: 100});
+let chips = new Product({name: "Chips", price: 50});
+let candy = new Product({name: "Candy", price: 65});
+let cheetos = new Product({name: "Cheetos", price: 50});
+let twizzlers = new Product({name: "Twizzlers", price: 75});
+
+let nickel  = new Coin({name: "nickel"}); // size and weight set upon coin init
+let dime    = new Coin({name: "dime"});
+let quarter = new Coin({name: "quarter"});
+let penny   = new Coin({name: "penny"});
 
 let inventory = [
         utils.copy(cola),
@@ -39,6 +46,20 @@ let coins = [
     utils.copy(quarter)
 ];
 
+coins = coins.map(coin => { // set value for pre loaded coins
+    coin.value = weightHash[coin.weight];
+    return coin;
+})
+
+// x load coins 
+// Cola - 1.00
+// Chips - 0.50
+// Candy - 0.65 If enough coins have been inserted
+// Display THANK YOU
+// Remove product from inventory
+// Dispense product if user inserts less than the cost of the chosen product
+// Machine displays 'PRICE: (cost of product)'
+
 class VendingMachine extends React.Component {
     constructor(props){
         super(props);
@@ -48,38 +69,41 @@ class VendingMachine extends React.Component {
             currentAmount: 0,
             coinReturn: [],
             productReturn: [],
-            inventory: inventory,
-            weightHash: {
-                772: 25,
-                415: 10,
-                630: 5,
-                554: 1
-            }
+            inventory: inventory
         };
     }
 
     display() {
-        // console.log(this.sumCoins())
         return this.sumCoins() > 100 ? 'Insert Coin' : 'Exact Change'
-    }
 
-    currentAmount() {
-        // console.log(this.state.insertedCoins)
-        return this.sumInsertedCoins()
-    }
-
-    sumInsertedCoins() {
-        return this.state.insertedCoins.reduce((acc, coin) => acc + coin.value, 0);
     }
 
     sumCoins() {
         return this.state.totalCoins.reduce((acc, coin) => acc + coin.value, 0)
     }
 
+    currentAmount() {
+        return this.sumInsertedCoins()
+    }
+
+    sumInsertedCoins() {
+        return this.state.insertedCoins.reduce((acc, coin) => acc + coin.value, 0);
+    }
+    // reconsider the display...
     chooseProduct(product) {
         console.log(product)
-        // this.state.selectProduct(prod)
-        this.setState({display: "You got " + product.name + "!"})
+        console.log(this.sumInsertedCoins())
+        console.log(this.sumCoins())
+        // Display THANK YOU
+        // Remove product from inventory
+        // Dispense product if user inserts less than the cost of the chosen product
+        // Machine displays 'PRICE: (cost of product)'
+        if ( this.sumInsertedCoins() > this.sumCoins() ) {
+            // remove the first product from inventory 
+            // that matches some property of the chosen product
+            this.setState({display: "Thank You"})
+        } else if ( this.sumInsertedCoins() < this.sumCoins() )
+            this.setState({display: "Price: " + product.cost})
     }
 
     insertCoin(coin) {
@@ -92,7 +116,7 @@ class VendingMachine extends React.Component {
     }
 
     identifyValue(coin) {
-        coin.value = this.state.weightHash[coin.weight];
+        coin.value = weightHash[coin.weight];
         return coin;
     }
 
@@ -108,8 +132,8 @@ class VendingMachine extends React.Component {
         this.setState({insertedCoins: this.state.insertedCoins.concat([coin])})
     }
 
-    machineDisplay() {
-        return this.state.display;
+    loadCoins() {
+        this.setState({totalCoins: this.state.totalCoins.concat(coins)})
     }
 
     render(){
@@ -148,6 +172,10 @@ class VendingMachine extends React.Component {
                         onClick={() => this.insertCoin(penny)}
                     >Penny</button>
                 <div>
+                    <button 
+                        type="button" 
+                        onClick={() => this.loadCoins()}
+                    >Load Coins</button>
 
                 </div>    
             </div>
