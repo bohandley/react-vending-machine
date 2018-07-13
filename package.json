@@ -12,7 +12,7 @@
     "prebuild": "npm run version && npm run test && npm run bundle",
     "version": "node version-check.js",
     "lint": "eslint . --ext .js --fix",
-    "start": "webpack-dev-server --progress --inline --open",
+    "start": "npx webpack-dev-server --hot --progress --colors --debug --output-pathinfo",
     "bundle": "webpack"
   },
   "repository": {

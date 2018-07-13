@@ -108,23 +108,53 @@ class VendingMachine extends React.Component {
     }
     // reconsider the display...
     chooseProduct(product) {
-        console.log(product)
-        console.log(this.sumInsertedCoins())
+        // console.log(product)
+        // console.log(this.sumInsertedCoins())
+        if ( !this.productInStock(product) )
+            this.setState({display: "Sold Out"})
+
+
         // Display THANK YOU
         // Remove product from inventory
         // Dispense product if user inserts less than the cost of the chosen product
         // Machine displays 'PRICE: (cost of product)'
         if ( this.sumInsertedCoins() >= product.price ) {
+            let prodIdx = this.checkInventory(product);
+            this.removeProduct(product);
             // remove the first product from inventory 
             // that matches some property of the chosen product
             let change = this.sumInsertedCoins() - product.price;
             this.returnChange(change)
+            console.log(this.state.productReturn)
             this.setState({
                 display: "Thank You",
                 insertedCoins: []
             })
         } else if ( this.sumInsertedCoins() < product.price )
             this.setState({display: "Price: " + product.price})
+    }
+
+    productInStock(product) {
+        let prodIdx = this.checkInventory(product);
+        let inStock = prodIdx >= 0 ? true : false;
+
+        if ( inStock )
+            return true;
+        else if ( !inStock )
+            return false;
+    }
+
+    removeProduct(i) {
+        let inv = this.state.inventory;
+        let pdProd = inv.splice(i, 1);
+        this.setState({
+            inventory: inv, 
+            productReturn: this.state.productReturn.push(pdProd)
+        });
+    }
+
+    checkInventory(product) {
+        return this.state.inventory.indexOf(prod => prod.name == product.name)
     }
 
     insertCoin(coin) {
