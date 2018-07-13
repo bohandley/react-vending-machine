@@ -1,4 +1,6 @@
 import React from "react";
+import ProductButtonGroup from "../components/ProductButtonGroup";
+import CoinButtonGroup from "../components/CoinButtonGroup";
 
 import { Coin } from "../scripts/coin";
 import { Product } from "../scripts/product";
@@ -69,13 +71,28 @@ class VendingMachine extends React.Component {
             currentAmount: 0,
             coinReturn: [],
             productReturn: [],
-            inventory: inventory
+            inventory: inventory,
+            display: "Have a Snack!",
+            selections: [
+                cola,
+                chips,
+                candy,
+                cheetos,
+                twizzlers
+            ],
+            coins: [
+                penny, 
+                nickel, 
+                dime, 
+                quarter
+            ]
         };
+
+        // this.chooseProduct = this.chooseProduct.bind(this);
     }
 
     display() {
         return this.sumCoins() > 100 ? 'Insert Coin' : 'Exact Change'
-
     }
 
     sumCoins() {
@@ -98,12 +115,15 @@ class VendingMachine extends React.Component {
         // Remove product from inventory
         // Dispense product if user inserts less than the cost of the chosen product
         // Machine displays 'PRICE: (cost of product)'
-        if ( this.sumInsertedCoins() > this.sumCoins() ) {
+        if ( this.sumInsertedCoins() >= product.price ) {
             // remove the first product from inventory 
             // that matches some property of the chosen product
-            this.setState({display: "Thank You"})
-        } else if ( this.sumInsertedCoins() < this.sumCoins() )
-            this.setState({display: "Price: " + product.cost})
+            this.setState({
+                display: "Thank You",
+                insertedCoins: []
+            })
+        } else if ( this.sumInsertedCoins() < product.price )
+            this.setState({display: "Price: " + product.price})
     }
 
     insertCoin(coin) {
@@ -136,41 +156,24 @@ class VendingMachine extends React.Component {
         this.setState({totalCoins: this.state.totalCoins.concat(coins)})
     }
 
+    productButtons() {
+        let products = []
+    }
+
     render(){
         return (
             <div>
-                <div>{this.display()}</div>
+                <div>{this.state.display}</div>
                 <div>{this.currentAmount()}</div>
-                <div>
-                    <button 
-                        type="button" 
-                        onClick={() => this.chooseProduct(cola)}
-                    >Cola</button>
-                    <button 
-                        type="button" 
-                        onClick={() => this.chooseProduct(cheetos)}
-                    >Cheetos</button>
-                    <button 
-                        type="button" 
-                        onClick={() => this.chooseProduct(twizzlers)}
-                    >Twizzlers</button>
-                </div>
-                    <button 
-                        type="button" 
-                        onClick={() => this.insertCoin(nickel)}
-                    >Nickel</button>
-                    <button 
-                        type="button" 
-                        onClick={() => this.insertCoin(dime)}
-                    >Dime</button>
-                    <button 
-                        type="button" 
-                        onClick={() => this.insertCoin(quarter)}
-                    >Quarter</button>
-                    <button 
-                        type="button" 
-                        onClick={() => this.insertCoin(penny)}
-                    >Penny</button>
+                    <ProductButtonGroup
+                        products={this.state.selections}
+                        onChoose={(product) => this.chooseProduct(product)}
+                    />
+                    <CoinButtonGroup
+                        coins={this.state.coins}
+                        onInsert={(coin) => this.insertCoin(coin)}
+                    />
+                    
                 <div>
                     <button 
                         type="button" 
@@ -184,3 +187,35 @@ class VendingMachine extends React.Component {
 }
 
 export default VendingMachine;
+
+// <div>              
+//     <button 
+//         type="button" 
+//         onClick={() => this.chooseProduct(cola)}
+//     >Cola</button>
+//     <button 
+//         type="button" 
+//         onClick={() => this.chooseProduct(cheetos)}
+//     >Cheetos</button>
+//     <button 
+//         type="button" 
+//         onClick={() => this.chooseProduct(twizzlers)}
+//     >Twizzlers</button>
+// </div>
+
+// <button 
+//     type="button" 
+//     onClick={() => this.insertCoin(nickel)}
+// >Nickel</button>
+// <button 
+//     type="button" 
+//     onClick={() => this.insertCoin(dime)}
+// >Dime</button>
+// <button 
+//     type="button" 
+//     onClick={() => this.insertCoin(quarter)}
+// >Quarter</button>
+// <button 
+//     type="button" 
+//     onClick={() => this.insertCoin(penny)}
+// >Penny</button>
