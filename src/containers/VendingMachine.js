@@ -165,6 +165,10 @@ class VendingMachine extends React.Component {
         console.log(change)
     }
 
+    takeCoins() {
+        this.setState({coinReturn: []});
+    }
+
     render(){
         return (
             <div>
@@ -187,6 +191,12 @@ class VendingMachine extends React.Component {
                 <div>
                     Coin Return: {this.displayCoinReturn()}
                     {/* add button to remove coins in coin return */}
+                </div>
+                <div>
+                    <button 
+                        type="button" 
+                        onClick={() => this.takeCoins()}
+                    >Take Coins</button>
                 </div>   
             </div>
         );
