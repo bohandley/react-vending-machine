@@ -110,7 +110,6 @@ class VendingMachine extends React.Component {
     chooseProduct(product) {
         console.log(product)
         console.log(this.sumInsertedCoins())
-        console.log(this.sumCoins())
         // Display THANK YOU
         // Remove product from inventory
         // Dispense product if user inserts less than the cost of the chosen product
@@ -118,6 +117,8 @@ class VendingMachine extends React.Component {
         if ( this.sumInsertedCoins() >= product.price ) {
             // remove the first product from inventory 
             // that matches some property of the chosen product
+            let change = this.sumInsertedCoins() - product.price;
+            this.returnChange(change)
             this.setState({
                 display: "Thank You",
                 insertedCoins: []
@@ -156,8 +157,12 @@ class VendingMachine extends React.Component {
         this.setState({totalCoins: this.state.totalCoins.concat(coins)})
     }
 
-    productButtons() {
-        let products = []
+    displayCoinReturn() {
+        return this.state.coinReturn.map(coin => coin.name);
+    }
+
+    returnChange(change) {
+        console.log(change)
     }
 
     render(){
@@ -165,22 +170,24 @@ class VendingMachine extends React.Component {
             <div>
                 <div>{this.state.display}</div>
                 <div>{this.currentAmount()}</div>
-                    <ProductButtonGroup
-                        products={this.state.selections}
-                        onChoose={(product) => this.chooseProduct(product)}
-                    />
-                    <CoinButtonGroup
-                        coins={this.state.coins}
-                        onInsert={(coin) => this.insertCoin(coin)}
-                    />
-                    
+                <ProductButtonGroup
+                    products={this.state.selections}
+                    onChoose={(product) => this.chooseProduct(product)}
+                />
+                <CoinButtonGroup
+                    coins={this.state.coins}
+                    onInsert={(coin) => this.insertCoin(coin)}
+                />   
                 <div>
                     <button 
                         type="button" 
                         onClick={() => this.loadCoins()}
                     >Load Coins</button>
-
-                </div>    
+                </div>
+                <div>
+                    Coin Return: {this.displayCoinReturn()}
+                    {/* add button to remove coins in coin return */}
+                </div>   
             </div>
         );
     }
