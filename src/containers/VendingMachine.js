@@ -87,8 +87,6 @@ class VendingMachine extends React.Component {
                 quarter
             ]
         };
-
-        // this.chooseProduct = this.chooseProduct.bind(this);
     }
 
     display() {
@@ -108,35 +106,65 @@ class VendingMachine extends React.Component {
     }
     // reconsider the display...
     chooseProduct(product) {
-        // console.log(product)
-        // console.log(this.sumInsertedCoins())
-        if ( !this.productInStock(product) )
-            this.setState({display: "Sold Out"})
+        let inv = this.state.inventory,
+            prodIdx = this.findProdIdx(product),
+            insertedCoins = this.state.insertedCoins,
+            pdProd, 
+            changeVal, 
+            change, 
+            totalCoins;
 
+        if ( prodIdx == -1 )
+            return this.setState({display: "Sold Out"})
 
-        // Display THANK YOU
-        // Remove product from inventory
-        // Dispense product if user inserts less than the cost of the chosen product
-        // Machine displays 'PRICE: (cost of product)'
+        if ( this.sumInsertedCoins() < product.price )
+            return this.setState({display: "Price: " + product.price})
+
         if ( this.sumInsertedCoins() >= product.price ) {
-            let prodIdx = this.checkInventory(product);
-            this.removeProduct(product);
-            // remove the first product from inventory 
-            // that matches some property of the chosen product
-            let change = this.sumInsertedCoins() - product.price;
-            this.returnChange(change)
-            console.log(this.state.productReturn)
-            this.setState({
+            pdProd = inv.splice(prodIdx, 1); 
+            changeVal = this.sumInsertedCoins() - product.price;
+            totalCoins = this.state.totalCoins;
+            change = this.makeChange(changeVal, totalCoins);
+            totalCoins = change[1];
+            change = change[0];
+            console.log(totalCoins.concat(insertedCoins))
+            return this.setState({
                 display: "Thank You",
-                insertedCoins: []
+                insertedCoins: [],
+                coinReturn: this.state.coinReturn.concat(change),
+                productReturn: this.state.productReturn.concat(pdProd),
+                inventory: inv,
+                totalCoins: totalCoins.concat(insertedCoins)
             })
         } else if ( this.sumInsertedCoins() < product.price )
-            this.setState({display: "Price: " + product.price})
+            return this.setState({display: "Price: " + product.price})
+    }
+
+    makeChange(change, totalCoins) {
+        let coinVals = [25,10,5],
+            rtndCoins = [],
+            cnIdx;
+
+        coinVals.forEach(val => {
+            let times = Math.floor(change / val);
+            if ( times == 0 )
+                return;
+
+            for (var i = 0; i < times; i++) {
+                cnIdx = totalCoins.findIndex(coin => coin.value == val)
+                
+                if ( cnIdx >= 0 ) {
+                    rtndCoins.push(totalCoins.splice(cnIdx, 1)[0]);
+                    change = change - val
+                } else
+                    return;
+            }
+        })
+        return [rtndCoins, totalCoins];
     }
 
     productInStock(product) {
-        let prodIdx = this.checkInventory(product);
-        let inStock = prodIdx >= 0 ? true : false;
+        let inStock = this.findProdIdx(product) >= 0 ? true : false;
 
         if ( inStock )
             return true;
@@ -144,17 +172,21 @@ class VendingMachine extends React.Component {
             return false;
     }
 
-    removeProduct(i) {
+    deliverProduct(i) {
         let inv = this.state.inventory;
         let pdProd = inv.splice(i, 1);
+        console.log(inv)
+        console.log(pdProd)
         this.setState({
             inventory: inv, 
-            productReturn: this.state.productReturn.push(pdProd)
+            productReturn: this.state.productReturn.concat([pdProd])
         });
     }
 
-    checkInventory(product) {
-        return this.state.inventory.indexOf(prod => prod.name == product.name)
+    findProdIdx(product) {
+        let inventory = this.state.inventory;
+        let idx = inventory.findIndex(prod => prod.name == product.name);
+        return idx;
     }
 
     insertCoin(coin) {
@@ -172,31 +204,47 @@ class VendingMachine extends React.Component {
     }
 
     updateCurrentAmount() {
-        this.setState({currentAmount: this.sumInsertedCoins()})
+        this.setState({
+            currentAmount: this.sumInsertedCoins()
+        });
     }
 
     returnCoin(coin) {
-        this.setState({coinReturn: this.state.coinReturn.concat([coin])})   
+        this.setState({
+            coinReturn: this.state.coinReturn.concat([coin])
+        });
     }
 
     depositCoin(coin) {
-        this.setState({insertedCoins: this.state.insertedCoins.concat([coin])})
+        this.setState({
+            insertedCoins: this.state.insertedCoins.concat([coin])
+        });
     }
 
     loadCoins() {
-        this.setState({totalCoins: this.state.totalCoins.concat(coins)})
+        this.setState({
+            totalCoins: this.state.totalCoins.concat(coins)
+        });
     }
 
     displayCoinReturn() {
-        return this.state.coinReturn.map(coin => coin.name);
+        return this.state.coinReturn.map(coin => coin.name).join(', ');
     }
 
-    returnChange(change) {
-        console.log(change)
+    displayProductReturn() {
+        return this.state.productReturn.map(prod => prod.name).join(', ');
     }
 
     takeCoins() {
-        this.setState({coinReturn: []});
+        this.setState({
+            coinReturn: []
+        });
+    }
+
+    takeProduct() {
+        this.setState({
+            productReturn: []
+        });
     }
 
     render(){
@@ -227,7 +275,17 @@ class VendingMachine extends React.Component {
                         type="button" 
                         onClick={() => this.takeCoins()}
                     >Take Coins</button>
-                </div>   
+                </div>
+                <div>
+                    Product Return: {this.displayProductReturn()}
+                    {/* add button to remove coins in coin return */}
+                </div>
+                <div>
+                    <button 
+                        type="button" 
+                        onClick={() => this.takeProduct()}
+                    >Take Product</button>
+                </div>  
             </div>
         );
     }
