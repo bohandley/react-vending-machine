@@ -7,7 +7,7 @@ class ObjButtonGroup extends React.Component {
 
             return (
                 <ObjButton
-                    class={this.props.name}
+                    class={object.name}
                     name={object.name}
                     obj={object}
                     onChoose={this.props.onChoose}
@@ -16,7 +16,7 @@ class ObjButtonGroup extends React.Component {
         });
 
         return (
-            <div>
+            <div class={this.props.class} >
                 {this.props.question}
                 {objects}
             </div>

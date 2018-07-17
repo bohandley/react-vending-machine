@@ -1,6 +1,7 @@
 import React from "react";
 
 import ObjButtonGroup from "../components/ObjButtonGroup";
+import ObjButton from "../components/ObjButton";
 import ObjReturn from "../components/ObjReturn";
 
 import { Coin } from "../scripts/coin";
@@ -16,16 +17,19 @@ const weightHash = {
     554: 1
 };
 
+let inventory = utils.copy(stock.inventory);
+let totalCoins = utils.copy(stock.totalCoins);
+
 class VendingMachine extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            totalCoins: stock.totalCoins,
+            totalCoins: totalCoins,
             insertedCoins: [],
             currentAmount: 0,
             coinReturn: [],
             productReturn: [],
-            inventory: stock.inventory,
+            inventory: inventory,
             display: "Have a Snack!",
             selections: stock.selections,
             coins: stock.coins
@@ -171,6 +175,7 @@ class VendingMachine extends React.Component {
 
     restockProducts() {
         this.setState({
+            display: this.display(),
             inventory: this.state.inventory.concat(stock.inventory)
         });
     }
@@ -195,18 +200,28 @@ class VendingMachine extends React.Component {
         });
     }
 
+    returnCoin() {
+        let coins = this.state.insertedCoins;
+        this.setState({
+            insertedCoins: [],
+            coinReturn: this.state.coinReturn.concat(coins)
+        })
+    }
+
     render(){
         return (
-            <div>
+            <div id="vending-machine">
                 <div>{this.state.display}</div>
                 <div>{this.currentAmount()}</div>
                 <ObjButtonGroup
+                    class="products"
                     name="Product"
                     question="Which product will you choose?"
                     objects={this.state.selections}
                     onChoose={(product) => this.chooseProduct(product)}
                 />
                 <ObjButtonGroup
+                    class="coins"
                     name="Coins"
                     question="How much will you insert?"
                     objects={this.state.coins}
@@ -217,6 +232,14 @@ class VendingMachine extends React.Component {
                     display={this.displayCoinReturn()}
                     onTake={() => this.takeCoins()}
                 />
+                <div>
+                    <button 
+                        type="button"
+                        onClick={()=> this.returnCoin()}
+                    >
+                        Coin Return
+                    </button>
+                </div>
                 <ObjReturn
                     name="Product" 
                     display={this.displayProductReturn()}

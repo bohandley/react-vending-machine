@@ -5,7 +5,7 @@ const utils = {
         _out = Array.isArray(o) ? [] : {};
         for (_key in o) {
             v = o[_key];
-            _out[_key] = (typeof v === "object" && v !== null) ? objFn.copy(v) : v;
+            _out[_key] = (typeof v === "object" && v !== null) ? utils.copy(v) : v;
         }
         return _out;
     },
