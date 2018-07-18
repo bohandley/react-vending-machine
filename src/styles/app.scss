@@ -1,13 +1,43 @@
 #vending-machine {
     margin: auto;
-    width: 60%;
+    width: 500px;
+    height: 500px;
     border: 2px solid black;
+    
+    .products, .interface {
+        height: 350px;
+        vertical-align: top;
+        display: inline-block;
+        margin: 2px;
+        border: 2px solid black;
+    }
+
+    .products {
+        width: 65%;
+    }
+
+    .interface {
+        width: 25%;
+        float: right;
+    }
+
+    .product-return {
+        width: 65%;
+        margin: 2px;
+        border: 2px solid black;
+    }
+
 }
 
 .products {
+    display: inline-block;
     margin: 2px;
     border: 2px solid black;
     width: 60%;
+}
+
+.coins {
+
 }
 
 .Product {
