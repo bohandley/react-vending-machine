@@ -4,8 +4,7 @@
     height: 500px;
     border: 2px solid black;
     
-    .products, .interface {
-        height: 350px;
+    .products, .interface {    
         vertical-align: top;
         display: inline-block;
         margin: 2px;
@@ -13,6 +12,7 @@
     }
 
     .products {
+        height: 350px;
         width: 65%;
     }
 
@@ -25,6 +25,27 @@
         width: 65%;
         margin: 2px;
         border: 2px solid black;
+    }
+
+    .display, 
+    .insert-coin, 
+    .coin-return, 
+    .admin, 
+    .product-selection {
+        width: 90%;
+        margin: auto;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        text-align: center;
+        border: 2px solid black;
+
+        .text {
+
+        }
+
+        .amount {
+
+        }
     }
 
 }
