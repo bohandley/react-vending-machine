@@ -24,6 +24,7 @@ class VendingMachine extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            image: "https://dallasnews.imgix.net/1467383389-liberty.png?w=724&h=500&auto=format&q=60&fit=clip",
             totalCoins: totalCoins,
             insertedCoins: [],
             currentAmount: 0,
@@ -138,9 +139,11 @@ class VendingMachine extends React.Component {
     insertCoin(coin) {
         coin = this.identifyValue(coin);
 
-        if ( coin.value == 1 )
-            this.returnCoin(coin);
-        else 
+        if ( coin.value == 1 ) {
+            this.setState({
+                coinReturn: this.state.coinReturn.concat([coin])
+            })
+        } else 
             this.depositCoin(coin);
     }
 
@@ -214,6 +217,7 @@ class VendingMachine extends React.Component {
                 
                 <div>
                     <div class="products">
+                        <img src={this.state.image} height="300px" width="300px" />
                     </div>
                     <div class="interface">
                         <div class="display">
@@ -235,19 +239,21 @@ class VendingMachine extends React.Component {
                                 objects={this.state.coins}
                                 onChoose={(coin) => this.insertCoin(coin)}
                             />
-                            <button 
-                                type="button"
-                                onClick={()=> this.returnCoin()}
-                            >
-                                Coin Return
-                            </button>
                         </div>
                         <div class="coin-return">
                             <ObjReturn
                                 name=""
                                 display={this.displayCoinReturn()}
                                 onTake={() => this.takeCoins()}
-                            />     
+                            />
+                            <div>
+                                <button 
+                                    type="button"
+                                    onClick={()=> this.returnCoin()}
+                                >
+                                    Coin Return
+                                </button>
+                            </div>     
                         </div>
                         <div class="admin">
                             Administrative Buttons
