@@ -218,11 +218,11 @@ class VendingMachine extends React.Component {
                 
                 <div>
                     <div class="products">
-                        <ProductWindow 
+                        <ProductWindow
+                            class="product-window" 
                             products={this.state.inventory}
                             text="window"
                         />
-                        <img src={this.state.image} height="300px" width="300px" />
                     </div>
                     <div class="interface">
                         <div class="display">

@@ -7,17 +7,16 @@ class ProductWindow extends React.Component {
     render() {
 
         const products = this.props.products.map((prod, i) => {
-            let cls = prod.name + i
             return (
                 <Product
-                    class={cls}
+                    class="prod"
                     text={prod.name}
                 />
             );
         });
 
         return (
-            <div>
+            <div class={this.props.class}>
                 {products}
             </div>
         )
