@@ -3,6 +3,7 @@ import React from "react";
 import ObjButtonGroup from "../components/ObjButtonGroup";
 import ObjButton from "../components/ObjButton";
 import ObjReturn from "../components/ObjReturn";
+import ProductWindow from "../components/ProductWindow";
 
 import { Coin } from "../scripts/coin";
 import { Product } from "../scripts/product";
@@ -217,6 +218,10 @@ class VendingMachine extends React.Component {
                 
                 <div>
                     <div class="products">
+                        <ProductWindow 
+                            products={this.state.inventory}
+                            text="window"
+                        />
                         <img src={this.state.image} height="300px" width="300px" />
                     </div>
                     <div class="interface">
