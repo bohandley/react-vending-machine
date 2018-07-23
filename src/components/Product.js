@@ -7,7 +7,8 @@ class Product extends React.Component {
 
         return(
             <div class={this.props.class}>
-                {this.props.text}
+                <div>{this.props.text}</div>
+                <div>{this.props.num}</div>
             </div>
         )
     }
