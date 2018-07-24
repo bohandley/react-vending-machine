@@ -14,7 +14,8 @@ let cola  = new Product({name: "Cola", price: 100}),
     chips = new Product({name: "Chips", price: 50}),
     candy = new Product({name: "Candy", price: 65}),
     cheetos = new Product({name: "Cheetos", price: 50}),
-    twizzlers = new Product({name: "Twizzlers", price: 75});
+    twizzlers = new Product({name: "Twizzlers", price: 75}),
+    carrot = new Product({name: "Carrot", price: 15});;
 
 let nickel  = new Coin({name: "nickel"}), // size and weight set upon coin init
     dime    = new Coin({name: "dime"}),
@@ -49,7 +50,10 @@ const stock = {
         utils.copy(cheetos),
         utils.copy(cheetos),
         utils.copy(twizzlers),
-        utils.copy(twizzlers)
+        utils.copy(twizzlers),
+        utils.copy(carrot),
+        utils.copy(carrot),
+        
     ],
     selections: [
         utils.copy(cola),
@@ -57,6 +61,7 @@ const stock = {
         utils.copy(candy),
         utils.copy(cheetos),
         utils.copy(twizzlers),
+        utils.copy(carrot),
     ],
     coins: [
         utils.copy(nickel),

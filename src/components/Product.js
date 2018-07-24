@@ -1,4 +1,5 @@
 import React from 'react';
+// import Cola from "../img/cola.png";
 
 class Product extends React.Component {
 
@@ -7,8 +8,15 @@ class Product extends React.Component {
 
         return(
             <div class={this.props.class}>
-                <div>{this.props.text}</div>
-                <div>{this.props.num}</div>
+                <div>
+                    {this.props.text}
+                </div>
+                <div class={this.props.imgCls}>
+                   
+                </div>
+                <div>
+                    {this.props.num}
+                </div>
             </div>
         )
     }
