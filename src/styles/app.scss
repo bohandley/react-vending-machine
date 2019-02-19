@@ -59,9 +59,11 @@
         }
     }
 
-    .p0, .p1, .p2, .p3, .p4, .p5 {       
-        height: 40px;
-        width: 40px;
+    .p0, .p1, .p2, .p3, .p4, .p5 { 
+        margin: auto;      
+        width: 30px;
+        height: 30px;
+
     }
 
     .p0 { background-image: url("../img/cola.png"); }

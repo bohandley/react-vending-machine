@@ -4,6 +4,7 @@ var nodeExternals = require('webpack-node-externals');
 const path = require("path"); 
 
 module.exports = {
+    mode: 'development',
     devtool: "source-map",
     entry  : "./src/scripts/app.js",     
     output : {
