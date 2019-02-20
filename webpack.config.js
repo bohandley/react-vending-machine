@@ -8,8 +8,9 @@ module.exports = {
     devtool: "source-map",
     entry  : "./src/scripts/app.js",     
     output : {
-        path: path.resolve(__dirname, "dist"),
-        filename : "./scripts/app.js"
+        path: __dirname,
+        publicPath: "/",
+        filename : "bundle.js"
     },
     module: {
         rules: [
