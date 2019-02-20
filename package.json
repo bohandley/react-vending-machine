@@ -13,8 +13,7 @@
     "version": "node version-check.js",
     "lint": "eslint . --ext .js --fix",
     "start": "npx webpack-dev-server --hot --progress --colors --debug --output-pathinfo",
-    "bundle": "webpack",
-    "heroku-postbuild": "webpack -p"
+    "bundle": "webpack"
   },
   "repository": {
     "type": "git",
