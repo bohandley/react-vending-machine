@@ -7,15 +7,16 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "karma start --singleRun",
-    "build": "echo \"BUILD OK\" && exit 0",
-    "prebuild": "npm run version && npm run test && npm run bundle",
-    "version": "node version-check.js",
-    "lint": "eslint . --ext .js --fix",
-    "dev-start": "npx webpack-dev-server --hot --progress --colors --debug --output-pathinfo",
-    "start": "node server.js",
-    "heroku-postbuild": "webpack -p",
-    "bundle": "webpack"
+    "build": "webpack --config webpack.prod.config.js",
+    "dev": "webpack-dev-server --hot --inline",
+    "lint": "eslint src/**",
+    "lint:watch": "esw -w src/**",
+    "review": "npm run lint && npm test",
+    "start": "npm run build && NODE_ENV=production node server.js",
+    "test": "jest src/**",
+    "test:watch": "jest src/** --watch",
+    "test:watchAll": "jest src/** --watchAll",
+    "test:coverage:report": "open coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
