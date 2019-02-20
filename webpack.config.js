@@ -47,13 +47,13 @@ module.exports = {
         ]
     },
     // externals: [nodeExternals()],
-    plugins :[
-        new CleanWebpackPlugin("dist"),
-        new HTMLWebpackPlugin({
-            filename: "index.html",
-            title: "React-TDD",
-            mainDiv: "welcome-message",
-            template: "src/index.html"
-        })
-    ]
+    // plugins :[
+    //     new CleanWebpackPlugin("dist"),
+    //     new HTMLWebpackPlugin({
+    //         filename: "index.html",
+    //         title: "React-TDD",
+    //         mainDiv: "welcome-message",
+    //         template: "src/index.html"
+    //     })
+    // ]
 };
