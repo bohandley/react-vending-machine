@@ -1,39 +1,58 @@
-const webpack = require('webpack');
-const path = require('path');
-// React v.16 uses some newer JS functionality, so to ensure everything
-// works across all browsers, we're adding babel-polyfill here.
-require('babel-polyfill');
+const CleanWebpackPlugin = require("clean-webpack-plugin"); 
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+var nodeExternals = require('webpack-node-externals');
+const path = require("path"); 
 
 module.exports = {
-  entry: [
-    './src/index'
-  ],
-  module: {
-    loaders: [
-      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
+    mode: 'development',
+    devtool: "source-map",
+    entry  : "./src/scripts/app.js",     
+    output : {
+        path: path.resolve(__dirname, "dist"),
+        filename : "./scripts/app.js"
+    },
+    module: {
+        rules: [
+            {
+                test    : /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader  : "babel-loader",
+                    options: {
+                        presets: ["es2015", "react"]
+                    }   
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            // {
+            //     test: /\.(png|svg|jpg|gif)$/,
+            //     use: [
+            //       'file-loader'
+            //     ]
+            // },
+            {
+                test: /\.(png|jp(e*)g|svg)$/,  
+                use: [{
+                    loader: 'url-loader',
+                    options: { 
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'img/[hash]-[name].[ext]'
+                    } 
+                }]
+            }
+        ]
+    },
+    // externals: [nodeExternals()],
+    plugins :[
+        new CleanWebpackPlugin("dist"),
+        new HTMLWebpackPlugin({
+            filename: "index.html",
+            title: "React-TDD",
+            mainDiv: "welcome-message",
+            template: "src/index.html"
+        })
     ]
-  },
-  resolve: {
-    modules: [
-      path.resolve('./'),
-      path.resolve('./node_modules'),
-    ],
-    extensions: ['.js','.scss'],
-  },
-  output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  devtool: 'cheap-eval-source-map',
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
 };
