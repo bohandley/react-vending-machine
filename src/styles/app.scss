@@ -1,29 +1,32 @@
 #vending-machine {
     margin: auto;
-    width: 500px;
-    height: 500px;
+    width: 80%;
+    height: 600px;
     border: 2px solid black;
 
     .product-window {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
 
         .prod {
             margin: 10px;
             border: solid 1px black;
             text-align: center;
+            border-radius: 20px;
+            height: 100px;
         }
     }
     
     .products, .interface {    
         vertical-align: top;
         display: inline-block;
-        margin: 2px;
+        margin: 16px;
         border: 2px solid black;
+        border-radius: 8px;
     }
 
     .products {
-        height: 350px;
+        height: 400px;
         width: 65%;
     }
 
@@ -33,9 +36,23 @@
     }
 
     .product-return {
+        position: relative;
         width: 65%;
-        margin: 2px;
+        margin: 16px;
         border: 2px solid black;
+        border-radius: 8px;
+        height: 100px;
+
+        .pr-header {
+            text-align: center;
+            margin: 0 auto;
+            height: 60px;
+        }
+
+        .pr-button {
+            width: 100px;
+            margin: 0 auto;
+        }
     }
 
     .display, 
