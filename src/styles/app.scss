@@ -1,7 +1,7 @@
 #vending-machine {
     margin: auto;
-    width: 80%;
-    height: 600px;
+    // width: 80%;
+    // height: 600px;
     border: 2px solid black;
 
     .product-window {
@@ -18,40 +18,40 @@
     }
     
     .products, .interface {    
-        vertical-align: top;
-        display: inline-block;
+        // vertical-align: top;
+        // display: inline-block;
         margin: 16px;
         border: 2px solid black;
         border-radius: 8px;
     }
 
     .products {
-        height: 400px;
-        width: 65%;
+        // height: 400px;
+        // width: 65%;
     }
 
     .interface {
-        width: 25%;
-        float: right;
+        // width: 25%;
+        // float: right;
     }
 
     .product-return {
-        position: relative;
-        width: 65%;
+        // position: relative;
+        // width: 65%;
         margin: 16px;
         border: 2px solid black;
         border-radius: 8px;
         height: 100px;
 
         .pr-header {
-            text-align: center;
+            // text-align: center;
             margin: 0 auto;
             height: 60px;
         }
 
         .pr-button {
-            width: 100px;
-            margin: 0 auto;
+            // width: 100px;
+            // margin: 0 auto;
         }
     }
 
