@@ -40,9 +40,12 @@ class ProductWindow extends React.Component {
     }
 
     render() {
+        const totalSpace = 12;
         let keys = this.state.keys;
         let imgs = this.state.imgs;
         let sortedInv = this.invSort(this.props.products);
+
+        let fillerCount = totalSpace - this.state.keys.length;
 
         const products = keys.map((key, i) => {
             let num = sortedInv[key].length > 0 ? sortedInv[key].length : 
@@ -60,9 +63,28 @@ class ProductWindow extends React.Component {
             );
         });
 
+        let filler = [];
+
+        while (fillerCount != 0){
+            filler.push((
+                <div class="col-4">
+                <Product
+                    class="prod"
+                    // text={key}
+                    // num={num}
+                    // imgCls={"p" + i}
+                />
+                </div>
+            ));
+
+            fillerCount = fillerCount - 1;
+        }
+
+        const prodSpace = products.concat(filler);
+
         return (
             <div class={this.props.class}>
-                {products}
+                {prodSpace}
             </div>
         )
     }
