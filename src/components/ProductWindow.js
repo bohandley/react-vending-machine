@@ -49,12 +49,14 @@ class ProductWindow extends React.Component {
                 "Sold Out";
             
             return (
+                <div class="col-4">
                 <Product
-                    class="prod col"
+                    class="prod"
                     text={key}
                     num={num}
                     imgCls={"p" + i}
                 />
+                </div>
             );
         });
 
