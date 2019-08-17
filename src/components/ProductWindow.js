@@ -50,7 +50,7 @@ class ProductWindow extends React.Component {
             
             return (
                 <Product
-                    class="prod"
+                    class="prod col"
                     text={key}
                     num={num}
                     imgCls={"p" + i}

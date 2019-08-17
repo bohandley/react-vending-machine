@@ -220,7 +220,7 @@ class VendingMachine extends React.Component {
                     <div class="row">
                         <div class="col-lg-8 col-md-7 col-sm-7 products">
                             <ProductWindow
-                                class="product-window" 
+                                class="product-window row" 
                                 products={this.state.inventory}
                                 text="window"
                             />
