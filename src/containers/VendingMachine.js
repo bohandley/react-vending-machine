@@ -216,64 +216,67 @@ class VendingMachine extends React.Component {
         return (
             <div class="row">
                 <div class="col-lg-9 col-md-10 col-sm-11" id="vending-machine">
-                    
                     <div class="row">
-                        <div class="col-lg-8 col-md-7 col-sm-7 products">
-                            <ProductWindow
-                                class="product-window row" 
-                                products={this.state.inventory}
-                                text="window"
-                            />
+                        <div class="col-lg-8 col-md-7 col-sm-7">
+                            <div class="products">
+                                <ProductWindow
+                                    class="product-window row" 
+                                    products={this.state.inventory}
+                                    text="window"
+                                />
+                            </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4 interface">
-                            <div class="display">
-                                <div class="message">{this.state.display}</div>
-                                <div class="amount">{this.currentAmount()}</div>
-                            </div>
-                            <ObjButtonGroup
-                                class="product-selection"
-                                name="Product"
-                                question="Which product will you choose?"
-                                objects={this.state.selections}
-                                onChoose={(product) => this.chooseProduct(product)}
-                            />
-                            <div class="insert-coin">
-                                <ObjButtonGroup
-                                    class="coins"
-                                    name="Coins"
-                                    question="Insert Coin"
-                                    objects={this.state.coins}
-                                    onChoose={(coin) => this.insertCoin(coin)}
-                                />
-                            </div>
-                            <div class="coin-return">
-                                <ObjReturn
-                                    name=""
-                                    display={this.displayCoinReturn()}
-                                    onTake={() => this.takeCoins()}
-                                />
-                                <div>
-                                    <button 
-                                        type="button"
-                                        onClick={()=> this.returnCoin()}
-                                    >
-                                        Coin Return
-                                    </button>
-                                </div>     
-                            </div>
-                            <div class="admin">
-                                Administrative Buttons
-                                <div>
-                                    <button 
-                                        type="button" 
-                                        onClick={() => this.loadCoins()}
-                                    >Load Coins</button>
+                        <div class="col-lg-4 col-md-5 col-sm-5">
+                            <div class="interface">
+                                <div class="display">
+                                    <div class="message">{this.state.display}</div>
+                                    <div class="amount">{this.currentAmount()}</div>
                                 </div>
-                                <div>
-                                    <button 
-                                        type="button" 
-                                        onClick={() => this.restockProducts()}
-                                    >Restock Products</button>
+                                <ObjButtonGroup
+                                    class="product-selection"
+                                    name="Product"
+                                    question="Which product will you choose?"
+                                    objects={this.state.selections}
+                                    onChoose={(product) => this.chooseProduct(product)}
+                                />
+                                <div class="insert-coin">
+                                    <ObjButtonGroup
+                                        class="coins"
+                                        name="Coins"
+                                        question="Insert Coin"
+                                        objects={this.state.coins}
+                                        onChoose={(coin) => this.insertCoin(coin)}
+                                    />
+                                </div>
+                                <div class="coin-return">
+                                    <ObjReturn
+                                        name=""
+                                        display={this.displayCoinReturn()}
+                                        onTake={() => this.takeCoins()}
+                                    />
+                                    <div>
+                                        <button 
+                                            type="button"
+                                            onClick={()=> this.returnCoin()}
+                                        >
+                                            Coin Return
+                                        </button>
+                                    </div>     
+                                </div>
+                                <div class="admin">
+                                    Administrative Buttons
+                                    <div>
+                                        <button 
+                                            type="button" 
+                                            onClick={() => this.loadCoins()}
+                                        >Load Coins</button>
+                                    </div>
+                                    <div>
+                                        <button 
+                                            type="button" 
+                                            onClick={() => this.restockProducts()}
+                                        >Restock Products</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
