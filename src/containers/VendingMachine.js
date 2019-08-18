@@ -220,7 +220,7 @@ class VendingMachine extends React.Component {
                         <div class="col-lg-8 col-md-7 col-sm-7">
                             <div class="products">
                                 <ProductWindow
-                                    class="product-window row" 
+                                    class="product-window row no-pad" 
                                     products={this.state.inventory}
                                     text="window"
                                 />
@@ -232,13 +232,15 @@ class VendingMachine extends React.Component {
                                     <div class="message">{this.state.display}</div>
                                     <div class="amount">{this.currentAmount()}</div>
                                 </div>
-                                <ObjButtonGroup
-                                    class="product-selection"
-                                    name="Product"
-                                    question="Which product will you choose?"
-                                    objects={this.state.selections}
-                                    onChoose={(product) => this.chooseProduct(product)}
-                                />
+                                <div class="row">
+                                    <ObjButtonGroup
+                                        class="product-selection col-8"
+                                        name="Product"
+                                        question="Which product will you choose?"
+                                        objects={this.state.selections}
+                                        onChoose={(product) => this.chooseProduct(product)}
+                                    />
+                                </div>
                                 <div class="insert-coin">
                                     <ObjButtonGroup
                                         class="coins"

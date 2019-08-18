@@ -8,11 +8,14 @@ class ObjButton extends React.Component {
     render() {
         return (
             <div className={this.props.class}>
+                
                 <button 
-                    type="button" 
+                    type="button"
+                    class="prod-button"
                     onClick={() => this.select(this.props.obj)}
                 >{this.props.name}
                 </button>
+                
             </div>
         );
     }

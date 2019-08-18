@@ -16,6 +16,7 @@
             height: 100px;
         }
     // }
+
     
     .products, .interface {    
         // vertical-align: top;
@@ -107,4 +108,18 @@
     font-family: orbitron;
     font-size: large;
     color: red;
+}
+
+.prod-button {
+    width: 82px;
+    margin:4px
+}
+
+.row.no-pad {
+  margin-right:0;
+  margin-left:0;
+}
+.row.no-pad > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
 }

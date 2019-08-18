@@ -17,6 +17,9 @@ class Product extends React.Component {
                 <div>
                     {this.props.num}
                 </div>
+                <div>
+                    {this.props.price}
+                </div>
             </div>
         )
     }

@@ -41,7 +41,6 @@ class ProductWindow extends React.Component {
 
     render() {
         const totalSpace = 12;
-        
         let keys = this.state.keys;
         let imgs = this.state.imgs;
         let sortedInv = this.invSort(this.props.products);
