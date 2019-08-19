@@ -76,7 +76,7 @@ class ProductWindow extends React.Component {
                 <Product
                     class="prod"
                     text={key}
-                    num={num}
+                    num={"("+num+")"}
                     imgCls={"p" + i}
                     price={price}
                 />
@@ -91,6 +91,8 @@ class ProductWindow extends React.Component {
                 <div class="col-4">
                 <Product
                     class="prod"
+                    text="Out of stock"
+                    price="$0.00"
                 />
                 </div>
             ));
