@@ -32,26 +32,36 @@ class VendingMachine extends React.Component {
             coinReturn: [],
             productReturn: [],
             inventory: inventory,
-            display: "Have a Snack!",
+            display: "Deposit Coins",
             selections: stock.selections,
             coins: stock.coins
         };
     }
 
     display() {
-        return this.sumCoins() > 100 ? 'Insert Coin' : 'Exact Change'
+        let coins = this.state.insertedCoins;
+        return this.sumCoins(coins) > 100 ? 'Insert Coin' : 'Exact Change';
     }
 
     sumCoins() {
-        return this.state.totalCoins.reduce((acc, coin) => acc + coin.value, 0)
+        return this.state.totalCoins.reduce((acc, coin) => acc + coin.value, 0);
     }
 
-    currentAmount() {
-        return this.sumInsertedCoins()
+    formatMoney(coins) {
+        let money = "" + this.sumCoins(coins),
+            l = money.length;
+
+        if (l == 1)
+            return "$0.0" + money;
+        else if (l == 2)
+            return "$0." + money;
+        else if (l >= 3){
+            return "$" + money.slice(0, l-2) + "." + money.slice(l-2);
+        }
     }
 
-    sumInsertedCoins() {
-        return this.state.insertedCoins.reduce((acc, coin) => acc + coin.value, 0);
+    sumCoins(coins) {
+        return coins.reduce((acc, coin) => acc + coin.value, 0);
     }
     // reconsider the display...
     chooseProduct(product) {
@@ -66,12 +76,12 @@ class VendingMachine extends React.Component {
         if ( prodIdx == -1 )
             return this.setState({display: "Sold Out"})
 
-        if ( this.sumInsertedCoins() < product.price )
+        if ( this.sumCoins(insertedCoins) < product.price )
             return this.setState({display: "Price: " + product.price})
 
-        if ( this.sumInsertedCoins() >= product.price ) {
+        if ( this.sumCoins(insertedCoins) >= product.price ) {
             pdProd = inv.splice(prodIdx, 1); 
-            changeVal = this.sumInsertedCoins() - product.price;
+            changeVal = this.sumCoins(insertedCoins) - product.price;
             totalCoins = this.state.totalCoins;
             change = this.makeChange(changeVal, totalCoins);
             totalCoins = change[1];
@@ -85,7 +95,7 @@ class VendingMachine extends React.Component {
                 inventory: inv,
                 totalCoins: totalCoins.concat(insertedCoins)
             })
-        } else if ( this.sumInsertedCoins() < product.price )
+        } else if ( this.sumCoins(insertedCoins) < product.price )
             return this.setState({display: "Price: " + product.price})
     }
 
@@ -154,8 +164,9 @@ class VendingMachine extends React.Component {
     }
 
     updateCurrentAmount() {
+        let coins = this.state.insertedCoins;
         this.setState({
-            currentAmount: this.sumInsertedCoins()
+            currentAmount: this.sumCoins(coins)
         });
     }
 
@@ -230,7 +241,7 @@ class VendingMachine extends React.Component {
                             <div class="interface">
                                 <div class="display">
                                     <div class="message">{this.state.display}</div>
-                                    <div class="amount">{this.currentAmount()}</div>
+                                    <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
                                 </div>
                                 <div class="row">
                                     <ObjButtonGroup
@@ -253,7 +264,7 @@ class VendingMachine extends React.Component {
                                 <div class="coin-return">
                                     <ObjReturn
                                         name=""
-                                        display={this.displayCoinReturn()}
+                                        display={this.formatMoney(this.state.coinReturn)}
                                         onTake={() => this.takeCoins()}
                                     />
                                     <div>
