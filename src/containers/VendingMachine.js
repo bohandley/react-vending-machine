@@ -239,9 +239,11 @@ class VendingMachine extends React.Component {
                         </div>
                         <div class="col-lg-4 col-md-5 col-sm-5">
                             <div class="interface">
-                                <div class="display">
-                                    <div class="message">{this.state.display}</div>
-                                    <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                <div class="row">
+                                    <div class="display col-3">
+                                        <div class="message">{this.state.display}</div>
+                                        <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <ObjButtonGroup
@@ -252,9 +254,9 @@ class VendingMachine extends React.Component {
                                         onChoose={(product) => this.chooseProduct(product)}
                                     />
                                 </div>
-                                <div class="insert-coin">
+                                <div class="row">
                                     <ObjButtonGroup
-                                        class="coins"
+                                        class="insert-coin col-8"
                                         name="Coins"
                                         question="Insert Coin"
                                         objects={this.state.coins}
