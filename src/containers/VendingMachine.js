@@ -240,9 +240,20 @@ class VendingMachine extends React.Component {
                         <div class="col-lg-4 col-md-5 col-sm-5">
                             <div class="interface">
                                 <div class="row">
-                                    <div class="display col-8">
-                                        <div class="message">{this.state.display}</div>
-                                        <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                    <div class="center col-8">
+                                        <div class ="row">
+                                            <div class="display col-6">
+                                                <div class="message">{this.state.display}</div>
+                                                <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                            </div>
+                                            <ObjButtonGroup
+                                                class="insert-coin col-6"
+                                                name="Coins"
+                                                question="Insert Coin"
+                                                objects={this.state.coins}
+                                                onChoose={(coin) => this.insertCoin(coin)}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -252,15 +263,6 @@ class VendingMachine extends React.Component {
                                         question="Which product will you choose?"
                                         objects={this.state.selections}
                                         onChoose={(product) => this.chooseProduct(product)}
-                                    />
-                                </div>
-                                <div class="row">
-                                    <ObjButtonGroup
-                                        class="insert-coin col-8"
-                                        name="Coins"
-                                        question="Insert Coin"
-                                        objects={this.state.coins}
-                                        onChoose={(coin) => this.insertCoin(coin)}
                                     />
                                 </div>
                                 <div class="row">

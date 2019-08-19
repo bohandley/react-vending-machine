@@ -115,11 +115,21 @@
     margin:4px
 }
 
+.coin-button {
+    width: 45px;
+    margin:4px;   
+}
+
 .row.no-pad {
   margin-right:0;
   margin-left:0;
 }
+
 .row.no-pad > [class*='col-'] {
   padding-right:0;
   padding-left:0;
+}
+
+.center {
+    margin: 0 auto;
 }
