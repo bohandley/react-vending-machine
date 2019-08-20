@@ -55,9 +55,7 @@
             // margin: 0 auto;
         }
     }
-
-    .display, 
-    .insert-coin, 
+ 
     .coin-return, 
     .admin, 
     .product-selection {
@@ -133,3 +131,15 @@
 .center {
     margin: 0 auto;
 }
+
+.display, .insert-coin {
+    vertical-align: middle;
+    margin: auto;
+    text-align: center;
+}
+
+.money {
+    border: 2px solid black;
+}
+
+

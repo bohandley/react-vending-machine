@@ -241,7 +241,7 @@ class VendingMachine extends React.Component {
                             <div class="interface">
                                 <div class="row">
                                     <div class="center col-8">
-                                        <div class ="row">
+                                        <div class ="money row">
                                             <div class="display col-6">
                                                 <div class="message">{this.state.display}</div>
                                                 <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
