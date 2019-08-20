@@ -73,13 +73,13 @@ class ProductWindow extends React.Component {
 
             return (
                 <div class="col-4">
-                <Product
-                    class="prod"
-                    text={key}
-                    num={"("+num+")"}
-                    imgCls={"p" + i}
-                    price={price}
-                />
+                    <Product
+                        class="prod"
+                        text={key}
+                        num={"("+num+")"}
+                        imgCls={"p" + i}
+                        price={price}
+                    />
                 </div>
             );
         });

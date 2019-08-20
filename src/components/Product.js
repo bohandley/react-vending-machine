@@ -8,14 +8,16 @@ class Product extends React.Component {
 
         return(
             <div class={this.props.class}>
-                <div>
-                    {this.props.text} {this.props.price}
-                </div>
-                <div class={this.props.imgCls}>
-                   
-                </div>
-                <div>
-                    {this.props.num}
+                <div class="prod-wrapper">
+                    <div>
+                        {this.props.text} {this.props.price}
+                    </div>
+                    <div class={this.props.imgCls}>
+                       
+                    </div>
+                    <div>
+                        {this.props.num}
+                    </div>
                 </div>
             </div>
         )
