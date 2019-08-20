@@ -39,7 +39,7 @@ class VendingMachine extends React.Component {
     }
 
     display() {
-        let coins = this.state.insertedCoins;
+        let coins = this.state.totalCoins;
         return this.sumCoins(coins) > 100 ? 'Insert Coin' : 'Exact Change';
     }
 
@@ -48,8 +48,13 @@ class VendingMachine extends React.Component {
     }
 
     formatMoney(coins) {
-        let money = "" + this.sumCoins(coins),
-            l = money.length;
+        let money = "" + this.sumCoins(coins);
+        
+        return this.addDollarSign(money);
+    }
+
+    addDollarSign(money) {
+        let l = money.length;
 
         if (l == 1)
             return "$0.0" + money;
@@ -77,7 +82,7 @@ class VendingMachine extends React.Component {
             return this.setState({display: "Sold Out"})
 
         if ( this.sumCoins(insertedCoins) < product.price )
-            return this.setState({display: "Price: " + product.price})
+            return this.setState({display: "Price: " + this.addDollarSign(''+product.price)})
 
         if ( this.sumCoins(insertedCoins) >= product.price ) {
             pdProd = inv.splice(prodIdx, 1); 
