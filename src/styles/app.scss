@@ -132,8 +132,7 @@
 }
 
 .display, 
-.insert-coin,  
-.admin-buttons {
+.insert-coin {
     vertical-align: middle;
     margin: auto;
     text-align: center;
@@ -156,4 +155,14 @@
 
 .coin-return {
     width: 100%;
+}
+
+.take-change {
+    margin: 4px auto;
+    height: 82px;
+}
+
+.admn-btn {
+    width: 95px;
+    margin: 2px;
 }

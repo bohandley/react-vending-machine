@@ -8,15 +8,10 @@ class ObjReturn extends React.Component {
     render() {
         return (
             <div class={this.props.class}>
-                <div>
-                    {this.props.display} 
-                </div>
-                <div class="pr-button">
-                    <button 
-                        type="button" 
-                        onClick={() => this.deliverProduct()}
-                    >Take Coins{this.props.name}</button>
-                </div>
+                <button 
+                    type="button" 
+                    onClick={() => this.deliverProduct()}
+                >{this.props.display + "\n"}Take Change</button>
             </div>
         )          
     }
