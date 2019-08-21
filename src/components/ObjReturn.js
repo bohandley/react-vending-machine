@@ -11,7 +11,7 @@ class ObjReturn extends React.Component {
                 <button 
                     type="button" 
                     onClick={() => this.deliverProduct()}
-                >{this.props.display + "\n"}Take Change</button>
+                >{this.props.display}</button>
             </div>
         )          
     }

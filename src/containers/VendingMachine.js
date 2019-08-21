@@ -302,7 +302,7 @@ class VendingMachine extends React.Component {
                                         <div class="take-change col-5">
                                             <ObjReturn
                                                 name=""
-                                                display={this.formatMoney(this.state.coinReturn)}
+                                                display={this.formatMoney(this.state.coinReturn)+ "\n Take Change"}
                                                 onTake={() => this.takeCoins()}
                                             />     
                                         </div>
@@ -334,9 +334,9 @@ class VendingMachine extends React.Component {
                     </div>
                     <div class="row">
                         <ObjReturn
-                            class="col-lg-8 col-md-7 col-sm-7 product-return"
+                            class="col-lg-8 col-md-7 col-sm-7 take-product product-return"
                             name="Product" 
-                            display={this.displayProductReturn()}
+                            display={"Take Product: \n" + this.displayProductReturn()}
                             onTake={() => this.takeProduct()}
                         />
                     </div>          
