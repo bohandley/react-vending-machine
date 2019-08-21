@@ -254,21 +254,33 @@ class VendingMachine extends React.Component {
                         <div class="col-lg-4 col-md-5 col-sm-5">
                             <div class="interface">
                                 <div class="row">
-                                    <div class="center col-8">
-                                        <div class ="money row">
-                                            <div class="display col-6">
-                                                <div class="message">{this.state.display}</div>
-                                                <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                    <div class="money center col-8">
+                                        
+                                            <div class ="row">
+                                                <div class="display col-5">
+                                                    <div class="message">{this.state.display}</div>
+                                                    <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                                </div>
+                                                <ObjButtonGroup
+                                                    class="insert-coin col-7"
+                                                    name="Coins"
+                                                    question=""
+                                                    objects={this.state.coins}
+                                                    onChoose={(coin) => this.insertCoin(coin)}
+                                                />
                                             </div>
-                                            <ObjButtonGroup
-                                                class="insert-coin col-6"
-                                                name="Coins"
-                                                question=""
-                                                objects={this.state.coins}
-                                                onChoose={(coin) => this.insertCoin(coin)}
-                                                onReturn={_=>this.returnCoin()}
-                                            />
-                                        </div>
+                                            <div class="return row">
+                                                <div class="col-12">
+                                                    <button 
+                                                        class="coin-return"
+                                                        type="button"
+                                                        onClick={_=>this.returnCoin()}
+                                                    >
+                                                        Coin Return
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="row">
@@ -287,14 +299,14 @@ class VendingMachine extends React.Component {
                                     <div class="admin col-8">
 
                                     <div class="row">
-                                        <div class="coin-return col-6">
+                                        <div class="coin-return col-5">
                                             <ObjReturn
                                                 name=""
                                                 display={this.formatMoney(this.state.coinReturn)}
                                                 onTake={() => this.takeCoins()}
                                             />     
                                         </div>
-                                        <div class="col-6">
+                                        <div class="admin-buttons col-7">
                                             Admin
                                             <div>
                                                 <button 

@@ -10,21 +10,10 @@ class ObjButtonGroup extends React.Component {
             "quarter": 25,
         };
 
-        const coinReturn = (
-            <div>
-                <button 
-                    type="button"
-                    onClick={this.props.onReturn}
-                >
-                    Coin Return
-                </button>
-            </div>
-        );
-
         let cls = this.props.class;
 
         const objects = this.props.objects.map(object => {
-            let name = cls == "insert-coin col-6" ? vls[object.name] + "\u00A2" : object.name;
+            let name = cls == "insert-coin col-7" ? vls[object.name] + "\u00A2" : object.name;
 
             return (
                 <ObjButton
@@ -41,7 +30,6 @@ class ObjButtonGroup extends React.Component {
                 {this.props.question}
                 <div class="row no-pad">
                     {objects}
-                    {cls == "insert-coin col-6" ? coinReturn : ''}
                 </div>
             </div>
         );

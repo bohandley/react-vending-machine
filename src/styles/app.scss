@@ -56,7 +56,7 @@
         }
     }
  
-    .admin, 
+    .admin,
     .product-selection {
         width: 90%;
         margin: auto;
@@ -131,16 +131,29 @@
     margin: 0 auto;
 }
 
-.display, .insert-coin, .coin-return {
+.display, 
+.insert-coin,  
+.admin-buttons {
     vertical-align: middle;
     margin: auto;
     text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .money {
     border: 2px solid black;
+    
+    .return {
+        margin-top: 2px;
+        margin-bottom: 4px;
+    }
 }
 
 .prod-wrapper {
     margin: 8px;
+}
+
+.coin-return {
+    width: 100%;
 }
