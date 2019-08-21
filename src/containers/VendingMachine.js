@@ -266,6 +266,7 @@ class VendingMachine extends React.Component {
                                                 question=""
                                                 objects={this.state.coins}
                                                 onChoose={(coin) => this.insertCoin(coin)}
+                                                onReturn={_=>this.returnCoin()}
                                             />
                                         </div>
                                     </div>
@@ -288,15 +289,7 @@ class VendingMachine extends React.Component {
                                             name=""
                                             display={this.formatMoney(this.state.coinReturn)}
                                             onTake={() => this.takeCoins()}
-                                        />
-                                        <div>
-                                            <button 
-                                                type="button"
-                                                onClick={()=> this.returnCoin()}
-                                            >
-                                                Coin Return
-                                            </button>
-                                        </div>     
+                                        />     
                                     </div>
                                 </div>
                                 <div class="row">

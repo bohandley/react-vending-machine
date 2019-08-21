@@ -8,7 +8,18 @@ class ObjButtonGroup extends React.Component {
             "penny": 1,
             "nickel": 5,
             "quarter": 25,
-        }
+        };
+
+        const coinReturn = (
+            <div>
+                <button 
+                    type="button"
+                    onClick={this.props.onReturn}
+                >
+                    Coin Return
+                </button>
+            </div>
+        );
 
         let cls = this.props.class;
 
@@ -30,6 +41,7 @@ class ObjButtonGroup extends React.Component {
                 {this.props.question}
                 <div class="row no-pad">
                     {objects}
+                    {cls == "insert-coin col-6" ? coinReturn : ''}
                 </div>
             </div>
         );
