@@ -99,9 +99,18 @@ class VendingMachine extends React.Component {
                 productReturn: this.state.productReturn.concat(pdProd),
                 inventory: inv,
                 totalCoins: totalCoins.concat(insertedCoins)
-            })
+            });
+
         } else if ( this.sumCoins(insertedCoins) < product.price )
             return this.setState({display: "Price: " + product.price})
+    }
+
+    resetDisplay() {
+        this.setState({display: "Deposit Coin"});
+    }
+
+    resetDisplayTimeout() {
+        setTimeout(_=> this.resetDisplay(), 2000);
     }
 
     makeChange(change, totalCoins) {
@@ -254,7 +263,7 @@ class VendingMachine extends React.Component {
                                             <ObjButtonGroup
                                                 class="insert-coin col-6"
                                                 name="Coins"
-                                                question="Insert Coin"
+                                                question=""
                                                 objects={this.state.coins}
                                                 onChoose={(coin) => this.insertCoin(coin)}
                                             />
@@ -267,7 +276,10 @@ class VendingMachine extends React.Component {
                                         name="Product"
                                         question="Which product will you choose?"
                                         objects={this.state.selections}
-                                        onChoose={(product) => this.chooseProduct(product)}
+                                        onChoose={(product) => {
+                                            this.chooseProduct(product);
+                                            this.resetDisplayTimeout();
+                                        }}
                                     />
                                 </div>
                                 <div class="row">
