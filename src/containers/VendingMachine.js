@@ -284,30 +284,36 @@ class VendingMachine extends React.Component {
                                     />
                                 </div>
                                 <div class="row">
-                                    <div class="coin-return col-8">
-                                        <ObjReturn
-                                            name=""
-                                            display={this.formatMoney(this.state.coinReturn)}
-                                            onTake={() => this.takeCoins()}
-                                        />     
+                                    <div class="admin col-8">
+
+                                    <div class="row">
+                                        <div class="coin-return col-6">
+                                            <ObjReturn
+                                                name=""
+                                                display={this.formatMoney(this.state.coinReturn)}
+                                                onTake={() => this.takeCoins()}
+                                            />     
+                                        </div>
+                                        <div class="col-6">
+                                            Admin
+                                            <div>
+                                                <button 
+                                                    type="button" 
+                                                    onClick={() => this.loadCoins()}
+                                                >+Coins</button>
+                                            </div>
+                                            <div>
+                                                <button 
+                                                    type="button" 
+                                                    onClick={() => this.restockProducts()}
+                                                >+Products</button>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                <div class="admin col-8">
-                                    Administrative Buttons
-                                    <div>
-                                        <button 
-                                            type="button" 
-                                            onClick={() => this.loadCoins()}
-                                        >Load Coins</button>
+
+                                        
                                     </div>
-                                    <div>
-                                        <button 
-                                            type="button" 
-                                            onClick={() => this.restockProducts()}
-                                        >Restock Products</button>
-                                    </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
