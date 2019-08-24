@@ -254,7 +254,7 @@ class VendingMachine extends React.Component {
                         <div class="col-lg-4 col-md-5 col-sm-5">
                             <div class="interface">
                                 <div class="row">
-                                    <div class="money center col-8">
+                                    <div class="money center col-12">
                                         
                                             <div class ="row">
                                                 <div class="display col-5">
@@ -285,7 +285,7 @@ class VendingMachine extends React.Component {
                                 </div>
                                 <div class="row">
                                     <ObjButtonGroup
-                                        class="product-selection col-8"
+                                        class="product-selection col-12"
                                         name="Product"
                                         question="Which product will you choose?"
                                         objects={this.state.selections}
@@ -296,7 +296,7 @@ class VendingMachine extends React.Component {
                                     />
                                 </div>
                                 <div class="row">
-                                    <div class="admin col-8">
+                                    <div class="admin col-12">
 
                                     <div class="row">
                                         <div class="take-change col-5">
