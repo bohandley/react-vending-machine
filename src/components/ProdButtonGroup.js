@@ -5,6 +5,7 @@ class ProdButtonGroup extends React.Component {
     constructor(props){
         super();
         this.state = {
+            selection: '',
             code: '',
             buttons: ['A','1','4','B','2','5','C','3','6']
         };
@@ -12,19 +13,47 @@ class ProdButtonGroup extends React.Component {
 
     codeSelect(code){
         code = this.state.code + code;
-
-        if(code.length < 2)
+    
+        if(code.length < 2){
+            this.setState({selection: code});
             this.setState({code: code});
-        else if(code.length == 2){
+        } else if(code.length == 2){
             let objects = this.props.objects;
 
             let chosen = objects.find(prod => prod.code == code);
             
-            this.props.onChoose(chosen);
+            if(chosen != null){
+                this.props.onChoose(chosen);
+                this.setState({selection: code});
+
+                setTimeout(_=> {
+                    this.clearSelection();
+                    this.clearCode();
+                },1000);
+            } else {
+                this.stars();
+                
+                setTimeout(_=> {
+                    this.clearSelection();
+                    this.clearCode();
+                },1000);
+            }
             
-            this.setState({code: ''});
         }  
     }
+
+    stars(){
+        this.setState({selection: "**"})
+    }
+
+    clearCode(){
+        this.setState({code: ''});
+    }
+
+    clearSelection(){
+        this.setState({selection: ''})
+    }
+
     render() {
         const objects = this.state.buttons.map(object => {
             return (
@@ -39,7 +68,15 @@ class ProdButtonGroup extends React.Component {
 
         return (
             <div class={this.props.class}>
-                {this.props.question}
+                <div class="row no-pad">
+                    <div class="col-6">
+                        {this.props.question}
+                    </div>
+                    <div class="choice col-1">
+                        {this.state.selection}
+                    </div>
+                </div>
+                
                 <div class="row no-pad">
                     {objects}
                 </div>

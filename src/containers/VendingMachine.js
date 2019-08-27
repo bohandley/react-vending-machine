@@ -114,7 +114,7 @@ class VendingMachine extends React.Component {
     }
 
     resetDisplayTimeout() {
-        setTimeout(_=> this.resetDisplay(), 2000);
+        setTimeout(_=> this.resetDisplay(), 1000);
     }
 
     makeChange(change, totalCoins) {
@@ -291,7 +291,7 @@ class VendingMachine extends React.Component {
                                     <ProdButtonGroup
                                         class="product-selection col-12"
                                         name="Product"
-                                        question="Which product will you choose?"
+                                        question="Choose a Product"
                                         objects={this.state.selections}
                                         onChoose={(product) => {
                                             this.chooseProduct(product);
