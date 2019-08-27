@@ -1,7 +1,7 @@
 import React from "react";
-import ObjButton from "./ObjButton";
+import CoinButton from "./CoinButton";
 
-class ObjButtonGroup extends React.Component {
+class CoinButtonGroup extends React.Component {
     render() {
         const vls = {
             "dime": 10,
@@ -12,11 +12,13 @@ class ObjButtonGroup extends React.Component {
 
         let cls = this.props.class;
 
+        // how to pull out the logic for one object, one button
+        // where a product needs a combo of buttons
         const objects = this.props.objects.map(object => {
             let name = cls == "insert-coin col-7" ? vls[object.name] + "\u00A2" : object.name;
 
             return (
-                <ObjButton
+                <CoinButton
                     class="col-6"
                     name={name}
                     obj={object}
@@ -36,4 +38,4 @@ class ObjButtonGroup extends React.Component {
     }
 }
 
-export default ObjButtonGroup;
+export default CoinButtonGroup;

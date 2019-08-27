@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ObjButton extends React.Component {
+class CoinButton extends React.Component {
     select(obj) {
         this.props.onChoose(obj);
     }
@@ -22,4 +22,4 @@ class ObjButton extends React.Component {
     }
 }
 
-export default ObjButton;
+export default CoinButton;

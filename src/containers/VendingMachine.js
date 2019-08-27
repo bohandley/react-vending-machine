@@ -1,7 +1,11 @@
 import React from "react";
 
-import ObjButtonGroup from "../components/ObjButtonGroup";
-import ObjButton from "../components/ObjButton";
+import ProdButtonGroup from "../components/ProdButtonGroup";
+import ProdButton from "../components/ProdButton";
+
+import CoinButtonGroup from "../components/CoinButtonGroup";
+import CoinButton from "../components/CoinButton";
+
 import ObjReturn from "../components/ObjReturn";
 import ProductWindow from "../components/ProductWindow";
 
@@ -261,7 +265,7 @@ class VendingMachine extends React.Component {
                                                     <div class="message">{this.state.display}</div>
                                                     <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
                                                 </div>
-                                                <ObjButtonGroup
+                                                <CoinButtonGroup
                                                     class="insert-coin col-7"
                                                     name="Coins"
                                                     question=""
@@ -284,7 +288,7 @@ class VendingMachine extends React.Component {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <ObjButtonGroup
+                                    <ProdButtonGroup
                                         class="product-selection col-12"
                                         name="Product"
                                         question="Which product will you choose?"
