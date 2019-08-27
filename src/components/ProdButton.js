@@ -6,13 +6,12 @@ class ProdButton extends React.Component {
     }
     
     render() {
-        let cls = this.props.name.includes("\u00A2") ? "coin-button" : "prod-button";
         return (
             <div className={this.props.class}>           
                 <button 
                     type="button"
-                    class={cls}
-                    onClick={() => this.select(this.props.obj)}
+                    class="prod-button"
+                    onClick={_=>this.select(this.props.obj)}
                 >{this.props.name}
                 </button>              
             </div>
