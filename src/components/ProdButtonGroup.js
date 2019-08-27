@@ -2,16 +2,37 @@ import React from "react";
 import ProdButton from "./ProdButton";
 
 class ProdButtonGroup extends React.Component {
+    constructor(props){
+        super();
+        this.state = {
+            code: '',
+            buttons: ['A','1','4','B','2','5','C','3','6']
+        };
+    }
+
+    codeSelect(code){
+        code = this.state.code + code;
+
+        if(code.length < 2)
+            this.setState({code: code});
+        else if(code.length == 2){
+            let objects = this.props.objects;
+
+            let chosen = objects.find(prod => prod.code == code);
+            
+            this.props.onChoose(chosen);
+            
+            this.setState({code: ''});
+        }  
+    }
     render() {
-        // how to pull out the logic for one object, one button
-        // where a product needs a combo of buttons
-        const objects = this.props.objects.map(object => {
+        const objects = this.state.buttons.map(object => {
             return (
                 <ProdButton
-                    class="col-6"
-                    name={object.name}
+                    class="col-4"
+                    name={object}
                     obj={object}
-                    onChoose={this.props.onChoose}
+                    onChoose={(code)=>this.codeSelect(code)}
                 />
             );
         });
