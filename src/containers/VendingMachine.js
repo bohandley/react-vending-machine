@@ -292,7 +292,7 @@ class VendingMachine extends React.Component {
                                     <ProdButtonGroup
                                         class="product-selection col-12"
                                         name="Product"
-                                        question="Choose a Product"
+                                        question="Choose a Product:"
                                         objects={this.state.selections}
                                         onChoose={(product) => {
                                             this.chooseProduct(product);

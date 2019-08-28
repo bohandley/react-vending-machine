@@ -5,36 +5,32 @@ class ProdButtonGroup extends React.Component {
     constructor(props){
         super();
         this.state = {
-            selection: '',
-            code: '',
+            code: '00',
             buttons: ['A','1','4','B','2','5','C','3','6']
         };
     }
 
     codeSelect(code){
-        code = this.state.code + code;
-    
-        if(code.length < 2){
-            this.setState({selection: code});
+        code = this.state.code[1] + code;
+
+        if(code.includes('0')){
             this.setState({code: code});
-        } else if(code.length == 2){
+        } else {
             let objects = this.props.objects;
 
             let chosen = objects.find(prod => prod.code == code);
             
             if(chosen != null){
                 this.props.onChoose(chosen);
-                this.setState({selection: code});
+                this.setState({code: code});
 
                 setTimeout(_=> {
-                    this.clearSelection();
                     this.clearCode();
                 },1000);
             } else {
                 this.stars();
                 
                 setTimeout(_=> {
-                    this.clearSelection();
                     this.clearCode();
                 },1000);
             }
@@ -43,15 +39,11 @@ class ProdButtonGroup extends React.Component {
     }
 
     stars(){
-        this.setState({selection: "**"})
+        this.setState({code: "**"})
     }
 
     clearCode(){
-        this.setState({code: ''});
-    }
-
-    clearSelection(){
-        this.setState({selection: ''})
+        this.setState({code: '00'});
     }
 
     render() {
@@ -73,7 +65,7 @@ class ProdButtonGroup extends React.Component {
                         {this.props.question}
                     </div>
                     <div class="choice col-1">
-                        {this.state.selection}
+                        {this.state.code}
                     </div>
                 </div>
                 

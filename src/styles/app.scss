@@ -64,8 +64,9 @@
 }
 
 .prod-button {
-    width: 82px;
-    margin:4px
+    width: 30px;
+    margin:4px;
+    border-radius: 100px;
 }
 
 .coin-button {
@@ -123,8 +124,7 @@
     margin: 2px;
 }
 
-.take-product {
-    
+.take-product {  
     button{
         margin: 6px auto;
         width: 100%;
