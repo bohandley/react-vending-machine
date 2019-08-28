@@ -68,12 +68,12 @@ const stock = {
         
     ],
     selections: [ // merge more into these objects, A1, A2, as well as the class associated for the image
-        utils.merge(colaSel,{cls: 'cola', code: 'A1', type: 'product'}),
-        utils.merge(chipsSel,{cls: 'chips', code: 'A2', type: 'product'}),
-        utils.merge(candySel,{cls: 'candy', code: 'A3', type: 'product'}),
-        utils.merge(cheetosSel,{cls: 'cheetos', code: 'B1', type: 'product'}),
-        utils.merge(twizzlersSel,{cls: 'twizzlers', code: 'B2', type: 'product'}),
-        utils.merge(carrotSel,{cls: 'carrot', code: 'B3', type: 'product'}),
+        utils.merge(colaSel,{cls: 'cola', code: 'A1', type: 'product', prcDisp: '$1.00'}),
+        utils.merge(chipsSel,{cls: 'chips', code: 'A2', type: 'product', prcDisp: '$0.50'}),
+        utils.merge(candySel,{cls: 'candy', code: 'A3', type: 'product', prcDisp: '$0.65'}),
+        utils.merge(cheetosSel,{cls: 'cheetos', code: 'B1', type: 'product', prcDisp: '$0.50'}),
+        utils.merge(twizzlersSel,{cls: 'twizzlers', code: 'B2', type: 'product', prcDisp: '$0.75'}),
+        utils.merge(carrotSel,{cls: 'carrot', code: 'B3', type: 'product', prcDisp: '$0.15'}),
     ],
     coins: [
         utils.merge(nickelSel, {cls: 'nickel', code: '5\u00A2', type: 'coin'}),

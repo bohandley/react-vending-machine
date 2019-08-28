@@ -6,79 +6,54 @@ import utils from "../scripts/utilities";
 
 
 class ProductWindow extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            keys: [
-                "Cola",
-                "Candy",
-                "Chips",
-                "Carrot",
-                "Cheetos",
-                "Twizzlers"
-            ],
-            imgs: [
-                "./img/candy.png",
-                "./img/chips.png",
-                "./img/carrot.png",
-                "./img/cheetos.png",
-                "./img/twizzlers.png"
-            ],
-            prices: [
-                "$1.00",
-                "$0.65",
-                "$0.50",
-                "$0.15",
-                "$0.50",
-                "$0.75"
-            ]
-
-        }
-    }
-
     invSort(inventory) {
-        // create an array of product names, not repeated
+        // create an array of products and their quantities
         let srtdInv = {},
-            keys = this.state.keys,
-            prices = this.state.prices,
+            selections = this.props.selections,
             invCopy = utils.copy(inventory);
 
-        for (var i = 0; i < keys.length; i++) {
-            let key = keys[i];
-            let price = prices[i];    
-            srtdInv[key] = {prods: [], price: price};
+        for (var i = 0; i < selections.length; i++) {
+            let name = selections[i].name;
+
+            srtdInv[name] = [];
         }
 
         invCopy.forEach(p => {
-            srtdInv[p.name].prods.push(p);
+            srtdInv[p.name].push(p);
         });
 
         return srtdInv;
     }
 
-    render() {
-        
+    render() {     
         const totalSpace = 12;
-        let keys = this.state.keys;
-        // let imgs = this.state.imgs;
+        let selections = this.props.selections;
+
         let sortedInv = this.invSort(this.props.products);
 
-        let fillerCount = totalSpace - this.state.keys.length;
+        let fillerCount = totalSpace - this.props.selections.length;
 
-        const products = keys.map((key, i) => {
-            let num = sortedInv[key].prods.length > 0 ? sortedInv[key].prods.length : 
+        const products = selections.map((sel, i) => {
+            let name = sel.name;
+
+            let num = sortedInv[name].length > 0 ? sortedInv[name].length : 
                 "Sold Out";
             
-            let price = sortedInv[key].price;
+            let price = sel.prcDisp;
+
+            let code = sel.code;
+
+            let cls = sel.cls;
 
             return (
                 <div class="col-4">
                     <Product
                         class="prod"
-                        text={key}
+                        text={name}
                         num={"("+num+")"}
-                        imgCls={"p" + i}
+                        imgCls={cls}
                         price={price}
+                        code={code}
                     />
                 </div>
             );

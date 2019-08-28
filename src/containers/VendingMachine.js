@@ -252,6 +252,7 @@ class VendingMachine extends React.Component {
                                     class="product-window row no-pad" 
                                     products={this.state.inventory}
                                     text="window"
+                                    selections={this.state.selections}
                                 />
                             </div>
                         </div>

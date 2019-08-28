@@ -1,58 +1,29 @@
 #vending-machine {
     margin: auto;
-    // width: 80%;
-    // height: 600px;
     border: 2px solid black;
 
-    // .product-window {
-        // display: grid;
-        // grid-template-columns: auto auto;
-
-        .prod {
-            margin: 10px;
-            border: solid 1px black;
-            text-align: center;
-            border-radius: 20px;
-            height: 100px;
-        }
-    // }
-
+    .prod {
+        margin: 10px;
+        border: solid 1px black;
+        text-align: center;
+        border-radius: 20px;
+        height: 118px;
+    }
     
     .products {    
-        // vertical-align: top;
-        // display: inline-block;
-        // margin: 16px;
         border: 2px solid black;
         border-radius: 8px;
     }
 
-    .products {
-        // height: 400px;
-        // width: 65%;
-    }
-
-    .interface {
-        // width: 25%;
-        // float: right;
-    }
-
     .product-return {
-        // position: relative;
-        // width: 65%;
         margin: 16px;
         border: 2px solid black;
         border-radius: 8px;
         height: 100px;
 
         .pr-header {
-            // text-align: center;
             margin: 0 auto;
             height: 60px;
-        }
-
-        .pr-button {
-            // width: 100px;
-            // margin: 0 auto;
         }
     }
  
@@ -64,37 +35,22 @@
         margin-bottom: 2px;
         text-align: center;
         border: 2px solid black;
-
-        .text {
-
-        }
-
-        .amount {
-
-        }
     }
 
-    .p0, .p1, .p2, .p3, .p4, .p5 { 
+    .cola, .candy, .chips, .carrot, .cheetos, .twizzlers { 
         margin: auto;      
         width: 30px;
         height: 30px;
 
     }
 
-    .p0 { background-image: url("../img/cola.png"); }
-    .p1 { background-image: url("../img/candy.png"); }
-    .p2 { background-image: url("../img/chips.png"); }
-    .p3 { background-image: url("../img/carrot.png"); }
-    .p4 { background-image: url("../img/cheeto.png"); }
-    .p5 { background-image: url("../img/twizzlers.png"); }
+    .cola { background-image: url("../img/cola.png"); }
+    .candy { background-image: url("../img/candy.png"); }
+    .chips { background-image: url("../img/chips.png"); }
+    .carrot { background-image: url("../img/carrot.png"); }
+    .cheetos { background-image: url("../img/cheeto.png"); }
+    .twizzlers { background-image: url("../img/twizzlers.png"); }
 
-}
-
-.products {
-    // display: inline-block;
-    // margin: 2px;
-    // border: 2px solid black;
-    // width: 60%;
 }
 
 .coins {
@@ -117,14 +73,14 @@
     margin:4px;   
 }
 
-.row.no-pad {
-  margin-right:0;
-  margin-left:0;
+.row.no-pad {   
+    margin-right:0;
+    margin-left:0;
 }
 
 .row.no-pad > [class*='col-'] {
-  padding-right:0;
-  padding-left:0;
+    padding-right:0;
+    padding-left:0;
 }
 
 .center {
@@ -177,6 +133,6 @@
 }
 
 .choice {
-    border:1px solid black;
+    border:1px solid grey;
     height: 28px
 }
