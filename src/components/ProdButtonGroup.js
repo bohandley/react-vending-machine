@@ -58,19 +58,21 @@ class ProdButtonGroup extends React.Component {
             );
         });
 
-        return (
-            <div class={this.props.class}>
-                <div class="row no-pad">
-                    <div class="col-6">
-                        {this.props.question}
+        return (    
+            <div class="col-12">
+                <div class="product-selection">
+                    <div class="row no-pad">
+                        <div class="col-6">
+                            {this.props.question}
+                        </div>
+                        <div class="choice col-1">
+                            {this.state.code}
+                        </div>
                     </div>
-                    <div class="choice col-1">
-                        {this.state.code}
+                    
+                    <div class="row no-pad">
+                        {objects}
                     </div>
-                </div>
-                
-                <div class="row no-pad">
-                    {objects}
                 </div>
             </div>
         );

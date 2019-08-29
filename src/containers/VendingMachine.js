@@ -246,7 +246,7 @@ class VendingMachine extends React.Component {
             <div class="row">
                 <div class="col-lg-9 col-md-10 col-sm-11" id="vending-machine">
                     <div class="row">
-                        <div class="col-lg-8 col-md-7 col-sm-7">
+                        <div class="col-lg-8 col-md-7 col-sm-7 prod-col">
                             <div class="products">
                                 <ProductWindow
                                     class="product-window row no-pad" 
@@ -255,16 +255,25 @@ class VendingMachine extends React.Component {
                                     selections={this.state.selections}
                                 />
                             </div>
+                            <ObjReturn
+                                class="product-return"
+                                innerClass="product-return-btn"
+                                name="Product" 
+                                display={"Take Product: \n" + this.displayProductReturn()}
+                                onTake={() => this.takeProduct()}
+                            />
                         </div>
-                        <div class="col-lg-4 col-md-5 col-sm-5">
+                        <div class="col-lg-4 col-md-5 col-sm-5 int-col">
                             <div class="interface">
-                                <div class="row">
-                                    <div class="money center col-12">
-                                        
-                                            <div class ="row">
-                                                <div class="display col-5">
+                                <div class="row no-pad">
+                                    <div class="col-12">
+                                        <div class="display">
+                                            <div class ="row no-pad">
+                                                <div class="col-5">
+                                                    
                                                     <div class="message">{this.state.display}</div>
                                                     <div class="amount">{this.formatMoney(this.state.insertedCoins)}</div>
+                                                    
                                                 </div>
                                                 <CoinButtonGroup
                                                     class="insert-coin col-7"
@@ -274,7 +283,7 @@ class VendingMachine extends React.Component {
                                                     onChoose={(coin) => this.insertCoin(coin)}
                                                 />
                                             </div>
-                                            <div class="return row">
+                                            <div class="row">
                                                 <div class="col-12">
                                                     <button 
                                                         class="coin-return"
@@ -285,12 +294,11 @@ class VendingMachine extends React.Component {
                                                     </button>
                                                 </div>
                                             </div>
-                                        
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row no-pad">
                                     <ProdButtonGroup
-                                        class="product-selection col-12"
                                         name="Product"
                                         question="Choose a Product:"
                                         objects={this.state.selections}
@@ -300,51 +308,43 @@ class VendingMachine extends React.Component {
                                         }}
                                     />
                                 </div>
-                                <div class="row">
-                                    <div class="admin col-12">
+                                <div class="row no-pad">
+                                    <div class="col-12">
+                                        <div class="admin">
+                                            <div class="row">
+                                                <div class="take-change col-5">
+                                                    <button
+                                                        class="coin-return-btn"
+                                                        type="button"
+                                                        onClick={() => this.takeCoins()}
+                                                    >{this.formatMoney(this.state.coinReturn)}<br/>Take Change</button>
+                                                </div>
+                                                <div class="col-7">
+                                                    Admin
+                                                    <div>
+                                                        <button 
+                                                            class="admn-btn"
+                                                            type="button" 
+                                                            onClick={() => this.loadCoins()}
+                                                        >+Coins</button>
+                                                    </div>
+                                                    <div>
+                                                        <button 
+                                                            class="admn-btn"
+                                                            type="button" 
+                                                            onClick={() => this.restockProducts()}
+                                                        >+Products</button>
+                                                    </div>
 
-                                    <div class="row">
-                                        <div class="take-change col-5">
-                                            <ObjReturn
-                                                name=""
-                                                display={this.formatMoney(this.state.coinReturn)+ "\n Take Change"}
-                                                onTake={() => this.takeCoins()}
-                                            />     
-                                        </div>
-                                        <div class="col-7">
-                                            Admin
-                                            <div>
-                                                <button 
-                                                    class="admn-btn"
-                                                    type="button" 
-                                                    onClick={() => this.loadCoins()}
-                                                >+Coins</button>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <button 
-                                                    class="admn-btn"
-                                                    type="button" 
-                                                    onClick={() => this.restockProducts()}
-                                                >+Products</button>
-                                            </div>
-
                                         </div>
-                                    </div>
-
-                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <ObjReturn
-                            class="col-lg-8 col-md-7 col-sm-7 take-product product-return"
-                            name="Product" 
-                            display={"Take Product: \n" + this.displayProductReturn()}
-                            onTake={() => this.takeProduct()}
-                        />
-                    </div>          
+                              
                 </div>
             </div>
         );
