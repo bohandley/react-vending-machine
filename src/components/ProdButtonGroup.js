@@ -61,7 +61,7 @@ class ProdButtonGroup extends React.Component {
         return (    
             <div class="col-12">
                 <div class="product-selection">
-                    <div class="row no-pad">
+                    <div class="code-display row no-pad">
                         <div class="col-6">
                             {this.props.question}
                         </div>

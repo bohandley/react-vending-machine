@@ -56,7 +56,14 @@
 
 .coin-button {
     width: 45px;
-    margin:4px;   
+    margin:4px; 
+    border-radius: 20px;  
+}
+
+.admn-btn {
+    width: 95px;
+    margin: 4px;
+    border-radius: 20px
 }
 
 .row.no-pad {   
@@ -112,7 +119,7 @@
     width: 100%;
     border-radius: 20px;
     margin: 10px;
-    height: 62px;
+    height: 68px;
 }
 
 .take-change {
@@ -120,16 +127,16 @@
     height: 82px;
 }
 
-.admn-btn {
-    width: 95px;
-    margin: 2px;
-}
-
 .choice {
     border:1px solid grey;
-    height: 28px
+    border-radius: 8px;
 }
 
 .prod-col, .int-col {
     padding-top: 15px;
 }
+
+.code-display {
+    margin: 10px 0;
+}
+
