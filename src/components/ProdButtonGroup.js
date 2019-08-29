@@ -65,7 +65,7 @@ class ProdButtonGroup extends React.Component {
                         <div class="col-6">
                             {this.props.question}
                         </div>
-                        <div class="choice col-1">
+                        <div class="choice col-2">
                             {this.state.code}
                         </div>
                     </div>

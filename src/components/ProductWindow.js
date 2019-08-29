@@ -26,7 +26,7 @@ class ProductWindow extends React.Component {
     }
 
     render() {     
-        const totalSpace = 12;
+        const totalSpace = 9;
         let selections = this.props.selections;
 
         let sortedInv = this.invSort(this.props.products);
