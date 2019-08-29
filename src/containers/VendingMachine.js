@@ -312,14 +312,14 @@ class VendingMachine extends React.Component {
                                     <div class="col-12">
                                         <div class="admin">
                                             <div class="row">
-                                                <div class="take-change col-7">
+                                                <div class="take-change col-6">
                                                     <button
                                                         class="coin-return-btn"
                                                         type="button"
                                                         onClick={() => this.takeCoins()}
                                                     >{this.formatMoney(this.state.coinReturn)}<br/>Take Change</button>
                                                 </div>
-                                                <div class="col-5">
+                                                <div class="col-6">
                                                     Admin
                                                     <div>
                                                         <button 
