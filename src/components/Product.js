@@ -1,5 +1,4 @@
 import React from 'react';
-// import Cola from "../img/cola.png";
 
 class Product extends React.Component {
 

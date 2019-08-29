@@ -53,7 +53,7 @@ class ProductWindow extends React.Component {
                         num={"("+num+")"}
                         imgCls={cls}
                         price={price}
-                        code={code}
+                        code={code[0]+'-'+code[1]}
                     />
                 </div>
             );

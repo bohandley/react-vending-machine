@@ -110,7 +110,7 @@ class VendingMachine extends React.Component {
     }
 
     resetDisplay() {
-        this.setState({display: "Deposit Coin"});
+        this.setState({display: "Deposit Coins"});
     }
 
     resetDisplayTimeout() {
