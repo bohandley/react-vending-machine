@@ -244,7 +244,7 @@ class VendingMachine extends React.Component {
     render(){
         return (
             <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-11" id="vending-machine">
+                <div class="col-lg-10 col-md-11 col-sm-12" id="vending-machine">
                     <div class="row">
                         <div class="col-lg-8 col-md-7 col-sm-7 prod-col">
                             <div class="products">
