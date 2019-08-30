@@ -283,17 +283,7 @@ class VendingMachine extends React.Component {
                                                     onChoose={(coin) => this.insertCoin(coin)}
                                                 />
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <button 
-                                                        class="coin-return"
-                                                        type="button"
-                                                        onClick={_=>this.returnCoin()}
-                                                    >
-                                                        Coin Return
-                                                    </button>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +302,17 @@ class VendingMachine extends React.Component {
                                     <div class="col-12">
                                         <div class="admin">
                                             <div class="row">
-                                                <div class="take-change col-6">
+                                                <div class="col-6">
+                                                    
+                                                    <button 
+                                                        class="coin-return"
+                                                        type="button"
+                                                        onClick={_=>this.returnCoin()}
+                                                    >
+                                                        Coin Return
+                                                    </button>
+
+
                                                     <button
                                                         class="coin-return-btn"
                                                         type="button"
@@ -321,30 +321,31 @@ class VendingMachine extends React.Component {
                                                 </div>
                                                 <div class="col-6">
                                                     Admin
-                                                    <div>
-                                                        <button 
-                                                            class="admn-btn"
-                                                            type="button" 
-                                                            onClick={() => this.loadCoins()}
-                                                        >+Coins</button>
-                                                    </div>
-                                                    <div>
-                                                        <button 
-                                                            class="admn-btn"
-                                                            type="button" 
-                                                            onClick={() => this.restockProducts()}
-                                                        >+Products</button>
-                                                    </div>
+                                                    <button 
+                                                        class="admn-btn"
+                                                        type="button" 
+                                                        onClick={() => this.loadCoins()}
+                                                    >+Coins</button>
 
+                                                    <button 
+                                                        class="admn-btn"
+                                                        type="button" 
+                                                        onClick={() => this.restockProducts()}
+                                                    >+Products</button>
+                                                
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-12">
+
+                                                </div>
+                                            </div>   
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                              
+                    </div>                
                 </div>
             </div>
         );

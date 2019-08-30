@@ -10,7 +10,7 @@
         border: solid 1px black;
         text-align: center;
         border-radius: 20px;
-        height: 118px;
+        height: 138px;
     }
     
     .products, .interface {    
@@ -51,21 +51,71 @@
 }
 
 .prod-button {
-    width: 54px;
+    // width: 54px;
     margin: 4px;
-    border-radius: 100px;
+    // border-radius: 100px;
+
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
 }
 
 .coin-button {
-    width: 60px;
-    margin:4px; 
-    border-radius: 20px;  
+    margin:4px;  
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+
 }
 
+.product-return-btn {
+    width: 97.5%;
+    border-radius: 20px;
+    margin: 10px;
+    height: 76px;
+}
+
+.coin-return, 
+.coin-return-btn,
 .admn-btn {
-    width: 120px;
-    margin: 4px;
-    border-radius: 20px
+    width: 100%;
+    border-radius: 20px;
+    margin: 4px 0;
+}
+
+.admn-btn, 
+.coin-return-btn,
+.product-return-btn,
+.coin-button,
+.prod-button,
+.coin-return {
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(92, 92, 92, 0.73);/*IconColor*/
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    font-weight: bold;
+    background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+    background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+    border-bottom: solid 2px #b5b5b5;
+}
+
+
+.admn-btn:active, 
+.coin-return-btn:active,
+.product-return-btn:active,
+.coin-button:active,
+.prod-button:active {
+    background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+    border-bottom: none;
 }
 
 .row.no-pad {   
@@ -89,6 +139,7 @@
     margin: 10px;
     text-align: center;
     border-radius: 20px;
+    padding: 10px;
 }
 
 .money {
@@ -104,26 +155,6 @@
     margin: 8px;
 }
 
-.coin-return {
-    width: 85%;
-    border-radius: 20px;
-    margin: 2px;
-}
-
-.product-return-btn {
-    width: 97.5%;
-    border-radius: 20px;
-    margin: 10px;
-    height: 76px;
-}
-
-.coin-return-btn {
-    width: 100%;
-    border-radius: 20px;
-    margin: 10px;
-    height: 68px;
-}
-
 .take-change {
     margin: 4px auto;
     height: 82px;
@@ -132,6 +163,7 @@
 .choice {
     border:1px solid grey;
     border-radius: 8px;
+    padding-top: 3px;
 }
 
 .prod-col, .int-col {
