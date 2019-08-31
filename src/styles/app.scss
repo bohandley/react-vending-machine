@@ -11,20 +11,21 @@
     border: solid 1px black;
     text-align: center;
     border-radius: 20px;
+    height: 148px;
 
 }
 
-@media (min-width: 800px) and (max-width: 1580px) {
-    .prod {
-        height: 148px;
-    }  
-}
+// @media (min-width: 800px) and (max-width: 1580px) {
+//     .prod {
+//         height: 148px;
+//     }  
+// }
 
-@media (min-width: 320px) and (max-width: 800px) {
-    .prod {
-        height: 178px;
-    }
-}
+// @media (min-width: 320px) and (max-width: 800px) {
+//     .prod {
+//         height: 178px;
+//     }
+// }
 
 .products, .interface {    
     border: 2px solid black;
