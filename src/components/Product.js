@@ -8,7 +8,7 @@ class Product extends React.Component {
             <div class={this.props.class}>
                 <div class="prod-wrapper">
                     <div>
-                        {this.props.text} {this.props.price}
+                        {this.props.text}<br/>{this.props.price}
                     </div>
                     <div class={this.props.imgCls}>
                     </div>
