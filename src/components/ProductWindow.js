@@ -64,7 +64,7 @@ class ProductWindow extends React.Component {
                 <div class="col-4">
                 <Product
                     class="prod"
-                    text="Out of stock"
+                    num="Out of stock"
                     price="$0.00"
                 />
                 </div>

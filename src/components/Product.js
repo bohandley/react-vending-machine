@@ -32,7 +32,7 @@ class Product extends React.Component {
                         {imgs}
                     </div>
                     <div>
-                        {this.props.num != "Sold Out" ? "Qty. " + this.props.num : this.props.num}
+                        {this.props.num != "Sold Out" && this.props.num != "Out of stock" ? "Qty. " + this.props.num : this.props.num}
                     </div>
                     <div>
                         {this.props.code}
