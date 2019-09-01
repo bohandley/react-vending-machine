@@ -77,7 +77,7 @@ const stock = {
         utils.merge(cheetosSel,{cls: 'cheetos', code: 'B1', type: 'product', prcDisp: '$0.50'}),
         utils.merge(twizzlersSel,{cls: 'twizzlers', code: 'B2', type: 'product', prcDisp: '$0.75'}),
         utils.merge(carrotSel,{cls: 'carrot', code: 'B3', type: 'product', prcDisp: '$0.15'}),
-        utils.merge(appleSel,{cls: 'carrot', code: 'B3', type: 'product', prcDisp: '$0.25'}),
+        utils.merge(appleSel,{cls: 'apple', code: 'C1', type: 'product', prcDisp: '$0.25'}),
     ],
     coins: [
         utils.merge(nickelSel, {cls: 'nickel', code: '5\u00A2', type: 'coin'}),

@@ -11,7 +11,7 @@ class Product extends React.Component {
                         {this.props.text}<br/>{this.props.price}
                     </div>
                     <div>
-                        <img class="prod-img" src="https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/twizzlers.png"/>
+                        <img class="prod-img" src={this.props.img}/>
                     </div>
                     <div>
                         Qty. {this.props.num}

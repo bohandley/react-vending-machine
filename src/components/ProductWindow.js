@@ -34,16 +34,13 @@ class ProductWindow extends React.Component {
         let fillerCount = totalSpace - this.props.selections.length;
 
         const products = selections.map((sel, i) => {
-            let name = sel.name;
-
-            let num = sortedInv[name].length > 0 ? sortedInv[name].length : 
-                "Sold Out";
-            
-            let price = sel.prcDisp;
-
-            let code = sel.code;
-
-            let cls = sel.cls;
+            let name = sel.name,
+                price = sel.prcDisp,
+                code = sel.code,
+                cls = sel.cls,
+                num = sortedInv[name].length > 0 ? sortedInv[name].length : 
+                "Sold Out",
+                img = num > 0 ? sel.img : "";
 
             return (
                 <div class="col-4">
@@ -51,6 +48,7 @@ class ProductWindow extends React.Component {
                         class="prod"
                         text={name}
                         num={num}
+                        img={img}
                         imgCls={cls}
                         price={price}
                         code={code[0]+'-'+code[1]}

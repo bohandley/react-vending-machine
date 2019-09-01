@@ -218,7 +218,7 @@ class VendingMachine extends React.Component {
     }
 
     displayProductReturn() {
-        return this.state.productReturn.map(prod => prod.name).join(', ');
+        return this.state.productReturn.map(prod => <img class="prod-img" src={prod.img}/> );
     }
 
     takeCoins() {
@@ -259,7 +259,7 @@ class VendingMachine extends React.Component {
                                 class="product-return"
                                 innerClass="product-return-btn"
                                 name="Product" 
-                                display={"Take Product: \n" + this.displayProductReturn()}
+                                display={this.displayProductReturn()}
                                 onTake={() => this.takeProduct()}
                             />
                         </div>
