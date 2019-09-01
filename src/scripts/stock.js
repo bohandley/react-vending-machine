@@ -10,12 +10,13 @@ const weightHash = {
     554: 1
 };
 
-let cola  = new Product({name: "Cola", price: 100}),
-    chips = new Product({name: "Chips", price: 50}),
-    candy = new Product({name: "Candy", price: 65}),
-    cheetos = new Product({name: "Cheetos", price: 50}),
-    twizzlers = new Product({name: "Twizzlers", price: 75}),
-    carrot = new Product({name: "Carrot", price: 15});;
+let cola  = new Product({name: "Cola", price: 100, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/c-cola.png"}),
+    chips = new Product({name: "Chips", price: 50, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/chips.png"}),
+    candy = new Product({name: "Reese's", price: 65, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/reese.png"}),
+    cheetos = new Product({name: "Cheetos", price: 50, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/cheetos.png"}),
+    twizzlers = new Product({name: "Twizzlers", price: 75, img:"https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/twizzlers.png"}),
+    carrot = new Product({name: "Carrot", price: 15, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/carrot.png"}),
+    apple = new Product({name: "Apple", price: 25, img: "https://vending-machine-bjo.s3.us-east-2.amazonaws.com/products/apple.png"});
 
 let nickel  = new Coin({name: "nickel"}), // size and weight set upon coin init
     dime    = new Coin({name: "dime"}),
@@ -44,7 +45,8 @@ let colaSel = utils.copy(cola),
     candySel = utils.copy(candy),
     cheetosSel = utils.copy(cheetos),
     twizzlersSel = utils.copy(twizzlers),
-    carrotSel = utils.copy(carrot);
+    carrotSel = utils.copy(carrot),
+    appleSel = utils.copy(apple);
 
 let nickelSel = utils.copy(nickel),
     dimeSel = utils.copy(dime),
@@ -65,7 +67,8 @@ const stock = {
         utils.copy(twizzlers),
         utils.copy(carrot),
         utils.copy(carrot),
-        
+        utils.copy(apple),
+        utils.copy(apple),
     ],
     selections: [ // merge more into these objects, A1, A2, as well as the class associated for the image
         utils.merge(colaSel,{cls: 'cola', code: 'A1', type: 'product', prcDisp: '$1.00'}),
@@ -74,6 +77,7 @@ const stock = {
         utils.merge(cheetosSel,{cls: 'cheetos', code: 'B1', type: 'product', prcDisp: '$0.50'}),
         utils.merge(twizzlersSel,{cls: 'twizzlers', code: 'B2', type: 'product', prcDisp: '$0.75'}),
         utils.merge(carrotSel,{cls: 'carrot', code: 'B3', type: 'product', prcDisp: '$0.15'}),
+        utils.merge(appleSel,{cls: 'carrot', code: 'B3', type: 'product', prcDisp: '$0.25'}),
     ],
     coins: [
         utils.merge(nickelSel, {cls: 'nickel', code: '5\u00A2', type: 'coin'}),
