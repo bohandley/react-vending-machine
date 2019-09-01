@@ -244,9 +244,9 @@ class VendingMachine extends React.Component {
     render(){
         return (
             <div class="row">
-                <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12 col-12" id="vending-machine">
+                <div class="col-lg-10 col-md-11 col-sm-12" id="vending-machine">
                     <div class="row">
-                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-7 col-7 prod-col">
+                        <div class="col-lg-8 col-md-7 col-sm-7 prod-col">
                             <div class="products">
                                 <ProductWindow
                                     class="product-window row no-pad" 
@@ -263,7 +263,7 @@ class VendingMachine extends React.Component {
                                 onTake={() => this.takeProduct()}
                             />
                         </div>
-                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5 col-5 int-col">
+                        <div class="col-lg-4 col-md-5 col-sm-5 int-col">
                             <div class="interface">
                                 <div class="row no-pad">
                                     <div class="col-12">
